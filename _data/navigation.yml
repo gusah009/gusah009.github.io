@@ -1,0 +1,10 @@
+# main links
+main:
+  - title: "whoami"
+    url: /about/
+  - title: "post"
+    url: /categories/
+  - title: "tag"
+    url: /tag/
+  # - title: "Sitemap"
+  #   url: /sitemap/
