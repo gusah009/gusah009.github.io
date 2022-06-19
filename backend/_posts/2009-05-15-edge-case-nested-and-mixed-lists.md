@@ -17,7 +17,7 @@ toc_sticky: false
 > [정수 10,000,000개가 적힌 파일을 입력받는데 걸리는 시간을 측정.](https://www.acmicpc.net/blog/view/56)
 > 
 > 
-> ![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled.png)
+> ![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled.png)
 > 
 
 왜 `Scanner`와 `BufferedReader`사이에 이런 차이가 나는 지 한 번 알아보겠습니다.
@@ -26,7 +26,7 @@ toc_sticky: false
 
 자바의 모든 입출력은 **Stream**을 통해 이루어집니다. 입출력 장치는 매우 다양해서 장치마자 입출력 부분을 일일이 다 구현할 수 없습니다. 이런 문제를 해결하기 위해 `Java`에서는 일종의 **가상 통로인 Stream**을 제공하는 것입니다.
 
-![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%201.png)
+![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled1.png)
 
 자바 Stream의 **이름**으로 입력용인지 출력용인지 구분이 가능합니다.
 
@@ -42,7 +42,7 @@ toc_sticky: false
 - **Stream**으로 끝나는 이름은 **바이트 단위**를 처리하는 Stream 클래스
 - **Reader나 Writer**로 끝나는 이름은 **문자**를 위한 Stream 클래스
     
-    ![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%202.png)
+    ![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled2.png)
     
 
 > `Java`에선 char형이 **ASCII가 아닌 Unicode**를 사용하므로 **`2바이트`**를 할당합니다!
@@ -56,7 +56,7 @@ toc_sticky: false
 어떤 프로그램이든 어떤 ‘입력'을 받으면 어떤 ‘출력'을 내놓게 됩니다. 리눅스에선 이를 `/dev` 디렉토리에 표준 입출력 **stream을 파일형태**로 담고 있습니다. 실제로 안을 열어보면 `stdin`, `stdout`이 들어 있는 것을 확인 할 수 있습니다.
 > 
 > 
-> ![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%203.png)
+> ![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled3.png)
 > 
 > **표준**이란 결국 추상화 된 입출력 장치를 의미합니다. 유닉스에선 따로 명시되지 않는 한 **부모 프로세스로 부터 표준 입출력 대상을 상속 받습니다.** 기본적으로 키보드로부터 표준 입력을 받고, 쉘(콘솔)로 표준 출력을 보내기 때문에 표준 입출력은 대부분 키보드, 쉘이라고 생각하시면 됩니다.
 > 
@@ -97,9 +97,9 @@ public class Main {
 }
 ```
 
-![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%204.png)
+![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled4.png)
 
-![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%205.png)
+![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled5.png)
 
 ## 백준 입력 Scanner vs BufferedReader
 
@@ -151,7 +151,7 @@ public class Main {
 }
 ```
 
-![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%206.png)
+![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled6.png)
 
 ### BufferedReader + Writer
 
@@ -183,7 +183,7 @@ public class Main {
 }
 ```
 
-![Untitled](/assets/images/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%20Java%20%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A7%E1%86%A8%20116de4c35914427cafe6fee9c8f185f9/Untitled%207.png)
+![Untitled](/assets/images/116de4c35914427cafe6fee9c8f185f9/Untitled7.png)
 
 ### Ref.
 
