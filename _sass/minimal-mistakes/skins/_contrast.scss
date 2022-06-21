@@ -14,22 +14,42 @@ $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
 
 /* contrast syntax highlighting (base16) */
-$base00: #000000 !default;
-$base01: #242422 !default;
-$base02: #484844 !default;
-$base03: #6c6c66 !default;
-$base04: #918f88 !default;
-$base05: #b5b3aa !default;
-$base06: #d9d7cc !default;
-$base07: #fdfbee !default;
-$base08: #ff6c60 !default;
-$base09: #e9c062 !default;
-$base0a: #ffffb6 !default;
-$base0b: #a8ff60 !default;
-$base0c: #c6c5fe !default;
-$base0d: #96cbfe !default;
-$base0e: #ff73fd !default;
-$base0f: #b18a3d !default;
+// $base00: #000000 !default;
+// $base01: #242422 !default;
+// $base02: #484844 !default;
+// $base03: #6c6c66 !default;
+// $base04: #918f88 !default;
+// $base05: #b5b3aa !default;
+// $base06: #d9d7cc !default;
+// $base07: #fdfbee !default;
+// $base08: #ff6c60 !default;
+// $base09: #e9c062 !default;
+// $base0a: #ffffb6 !default;
+// $base0b: #a8ff60 !default;
+// $base0c: #c6c5fe !default;
+// $base0d: #96cbfe !default;
+// $base0e: #ff73fd !default;
+// $base0f: #b18a3d !default;
+
+$base00: #1e1e1e !default;
+$base01: #D8D8D8 !default;
+$base02: #D8D8D8 !default;
+$base03: #D8D8D8 !default;
+$base04: #181818 !default;
+$base05: #7CAFC2 !default;
+$base06: #585858 !default;
+$base07: #7CAFC2 !default;
+$base08: #86C1B9 !default;
+$base09: #A1B56C !default;
+$base0a: #BA8BAF !default;
+$base0b: #AB4642 !default;
+$base0c: #F8F8F8 !default;
+$base0d: #F7CA88 !default;
+$base0e: #86C1B9 !default;
+$base0f: #A1B56C !default;
+$base: #BA8BAF;
+$base: #AB4642;
+$base: #D8D8D8;
 
 .page__content {
   .notice,
