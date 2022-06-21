@@ -9,7 +9,7 @@ figure.highlight {
   background: $base00;
   color: $base05;
   font-family: $monospace;
-  font-size: $type-size-6;
+  font-size: $type-size-5;
   line-height: 1.8;
   border-radius: $border-radius;
 
@@ -340,6 +340,7 @@ body .gist .pl-stj,
 body .gist .pl-vo,
 body .gist .pl-id,
 body .gist .pl-ii {
+  font-size: 14px;
    color: #fff;
 }
 body .gist .pl-enti,
@@ -356,7 +357,7 @@ body .gist .pl-pdc {
 body .gist .pl-c1,
 body .gist .pl-pdc1,
 body .gist .pl-scp {
-   color: #6c99bb;
+   color: rgb(175, 206, 154);
 }
 body .gist .pl-ent,
 body .gist .pl-eoa,
@@ -422,11 +423,6 @@ body .gist .pl-mq,
 body .gist .pl-mri,
 body .gist .pl-pde,
 body .gist .pl-pse,
-body .gist .pl-pse .pl-s2,
-body .gist .pl-s,
-body .gist .pl-st,
-body .gist .pl-stp,
-body .gist .pl-sv,
 body .gist .pl-v,
 body .gist .pl-va,
 body .gist .pl-vi,
@@ -435,6 +431,7 @@ body .gist .pl-vpu,
 body .gist .pl-mdr {
    color: rgb(52, 158, 218);;
 }
+
 body .gist .pl-cos,
 body .gist .pl-ml,
 body .gist .pl-pds,
@@ -457,6 +454,9 @@ body .gist .pl-smp,
 body .gist .pl-mdh,
 body .gist .pl-mdi {
    color: rgb(0, 204, 176);;
+}
+body .gist .pl-s {
+  color: rgb(208, 140, 100);
 }
 body .gist .pl-ef,
 body .gist .pl-enf,
