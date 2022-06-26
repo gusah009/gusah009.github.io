@@ -32,6 +32,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">Projects</span>
+            <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "PNU-pathfinder" %}
+                    <li><a href="/categories/pathfinder" class="">PNU-pathfinder ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
         <span class="nav__sub-title">Computer Science</span>
             <ul>
               {% for category in site.categories %}
@@ -40,6 +48,7 @@
                   {% endif %}
               {% endfor %}
             </ul>
+            
         <span class="nav__sub-title">Etc</span>
             <ul>
                 {% for category in site.categories %}
