@@ -40,6 +40,13 @@
                 {% endif %}
             {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "keeper-homepage" %}
+                        <li><a href="/categories/keeper-homepage" class="">keeper homepage ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
         <span class="nav__sub-title">Computer Science</span>
             <ul>
               {% for category in site.categories %}
