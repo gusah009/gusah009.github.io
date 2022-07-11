@@ -34,5 +34,25 @@ toc_sticky: false
 
 <script src="https://gist.github.com/gusah009/9f7509393675bcf598b7a18ff4fc17fa.js"></script>
 
+## 클래스를 확장 했을 떄 `Comparable` 문제
+아래와 같은 코드가 있다고 가정해보겠습니다.
+<script src="https://gist.github.com/gusah009/782e4b0b68f15706c9fb9ddc9233650b.js"></script>
+
+<script src="https://gist.github.com/gusah009/23699c606ebb663e2997d6d5a619d11e.js"></script>
+
+위와 같이 코드가 있을 때, `compareTo` 규약을 지킬 수 없습니다. 아래 예시를 보겠습니다.
+
+<script src="https://gist.github.com/gusah009/8729d7c4fa6ea2901d795e7bd8f9460a.js"></script>
+
+위 코드의 결과는 아래와 같습니다.
+```
+point.compareTo(pointColor): 0 == 0
+ClassCastException
+```
+위와 같은 현상이 발생하는 이유는, `compareTo`를 재정의하는 과정에서 `ClassCastException`이 발생할 수 있는 코드를 작성하게 되기 때문입니다. 따라서 위 코드는 아래와 같이 수정되어야 규약을 지킬 수 있습니다.
+
+<script src="https://gist.github.com/gusah009/ded7c5548290ce1bab3de057d8509229.js"></script>
+
+위와 같이 `GoodPointColor`처럼 사용하여야 서로 다른 `Class`에 대한 `compareTo` 비교를 컴파일 단계에서 막을 수 있습니다.
 ## 요약
 순서를 고려해야 하는 값 클래스를 작성한다면 꼭 `Comparable` 인터페이스를 구현하여, 그 인스턴스들을 쉽게 정렬하고, 검색하고, 비교 기능을 제공하는 컬렉션과 어우러지도록 해야 합니다. `compareTo` 메서드에서 필드 값을 비교할 때 `<`와 `>` 연산자는 쓰지 말아야 합니다. 대신 박싱 된 기본 타입 클래스가 제공하는 정적 `compare`메서드나 `Comparator`인터페이스가 제공하는 비교자 생성 메서드를 사용합시다.
