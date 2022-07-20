@@ -2,15 +2,18 @@
    Syntax highlighting
    ========================================================================== */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
 div.highlighter-rouge,
 figure.highlight {
   position: relative;
-  margin-bottom: 1em;
-  background: $base00;
-  color: $base05;
-  font-family: $monospace;
-  font-size: $type-size-5;
-  line-height: 1.8;
+  // margin-bottom: 1em;
+  background: rgb(30, 30, 30);
+  font-size: 14px;
+  // color: $base05;
+  font-family: 'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospac';
+  // font-size: $type-size-5;
+  line-height: 1.4;
   border-radius: $border-radius;
 
   > pre,
@@ -76,7 +79,7 @@ figure.highlight {
   }
   .k {
     /* Keyword */
-    color: $base0e;
+    color: rgb(52, 158, 218);
   }
   .l {
     /* Literal */
@@ -84,11 +87,11 @@ figure.highlight {
   }
   .n {
     /* Name */
-    color: $base05;
+    color: rgb(135, 222, 255);
   }
   .o {
     /* Operator */
-    color: $base0c;
+    color: white;
   }
   .p {
     /* Punctuation */
@@ -104,7 +107,8 @@ figure.highlight {
   }
   .c1 {
     /* Comment.Single */
-    color: $base04;
+   color: rgb(110, 197, 95);
+   font-style: italic;
   }
   .cs {
     /* Comment.Special */
@@ -143,27 +147,27 @@ figure.highlight {
   }
   .kc {
     /* Keyword.Constant */
-    color: $base0e;
+    color: rgb(52, 158, 218);
   }
   .kd {
     /* Keyword.Declaration */
-    color: $base0e;
+    color: rgb(52, 158, 218);
   }
   .kn {
     /* Keyword.Namespace */
-    color: $base0c;
+    color: rgb(52, 158, 218);
   }
   .kp {
     /* Keyword.Pseudo */
-    color: $base0e;
+    color: rgb(52, 158, 218);
   }
   .kr {
     /* Keyword.Reserved */
-    color: $base0e;
+    color: rgb(52, 158, 218);
   }
   .kt {
     /* Keyword.Type */
-    color: $base0a;
+    color: rgb(52, 158, 218);
   }
   .ld {
     /* Literal.Date */
@@ -175,51 +179,51 @@ figure.highlight {
   }
   .s {
     /* Literal.String */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .na {
     /* Name.Attribute */
-    color: $base0d;
+    color: rgb(221, 210, 166);
   }
   .nb {
     /* Name.Builtin */
-    color: $base05;
+    color: rgb(0, 204, 176);
   }
   .nc {
     /* Name.Class */
-    color: $base0a;
+    color: rgb(0, 204, 176);
   }
   .no {
     /* Name.Constant */
-    color: $base08;
+    color: rgb(255, 193, 95);
   }
   .nd {
     /* Name.Decorator */
-    color: $base0c;
+    color: rgb(0, 204, 176);
   }
   .ni {
     /* Name.Entity */
-    color: $base05;
+    color: rgb(0, 204, 176);
   }
   .ne {
     /* Name.Exception */
-    color: $base08;
+    color: rgb(0, 204, 176);
   }
   .nf {
     /* Name.Function */
-    color: $base0d;
+    color: rgb(221, 210, 166);
   }
   .nl {
     /* Name.Label */
-    color: $base05;
+    color: rgb(0, 204, 176);
   }
   .nn {
     /* Name.Namespace */
-    color: $base0a;
+    color: rgb(0, 204, 176);
   }
   .nx {
     /* Name.Other */
-    color: $base0d;
+    color: rgb(0, 204, 176);
   }
   .py {
     /* Name.Property */
@@ -247,19 +251,19 @@ figure.highlight {
   }
   .mh {
     /* Literal.Number.Hex */
-    color: $base09;
+    color: rgb(175, 206, 154);
   }
   .mi {
     /* Literal.Number.Integer */
-    color: $base09;
+    color: rgb(175, 206, 154);
   }
   .mo {
     /* Literal.Number.Oct */
-    color: $base09;
+    color: rgb(175, 206, 154);
   }
   .sb {
     /* Literal.String.Backtick */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .sc {
     /* Literal.String.Char */
@@ -271,7 +275,7 @@ figure.highlight {
   }
   .s2 {
     /* Literal.String.Double */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .se {
     /* Literal.String.Escape */
@@ -279,7 +283,7 @@ figure.highlight {
   }
   .sh {
     /* Literal.String.Heredoc */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .si {
     /* Literal.String.Interpol */
@@ -287,19 +291,19 @@ figure.highlight {
   }
   .sx {
     /* Literal.String.Other */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .sr {
     /* Literal.String.Regex */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .s1 {
     /* Literal.String.Single */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .ss {
     /* Literal.String.Symbol */
-    color: $base0b;
+    color: rgb(216, 157, 122);
   }
   .bp {
     /* Name.Builtin.Pseudo */
@@ -475,8 +479,6 @@ body .gist .pl-sr,
 body .gist .pl-enti {
    color: #b83426;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 
 body {
   font: 16px 'Noto Sans KR', sans-serif;
