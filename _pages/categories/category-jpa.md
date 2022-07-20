@@ -1,11 +1,11 @@
 ---
-title: "Clean Code 공부"
+title: "JPA 공부"
 layout: archive
-permalink: categories/clean_code
+permalink: categories/jpa
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.clean_code %}
+{% assign posts = site.categories.jpa %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

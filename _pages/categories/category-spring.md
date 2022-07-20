@@ -1,11 +1,11 @@
 ---
-title: "Backend 공부"
+title: "spring 공부"
 layout: archive
-permalink: categories/backend
+permalink: categories/spring
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.backend %}
+{% assign posts = site.categories.spring %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

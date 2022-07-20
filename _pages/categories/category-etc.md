@@ -1,11 +1,11 @@
 ---
-title: "Clean Code 공부"
+title: "Java 관련 잡다한 지식"
 layout: archive
-permalink: categories/clean_code
+permalink: categories/etc
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.clean_code %}
+{% assign posts = site.categories.etc %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
