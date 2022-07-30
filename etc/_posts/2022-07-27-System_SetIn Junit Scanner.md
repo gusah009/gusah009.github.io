@@ -107,4 +107,5 @@ void input1Test() {
 
 따라서 위 방식이 현재로선 최선으로 보입니다.
 
-**사용한 코드: [https://github.com/gusah009/javaStudy/tree/master/blog/src](https://github.com/gusah009/javaStudy/tree/master/blog/src)**
+**사용한 코드: [https://github.com/gusah009/javaStudy/tree/master/blog/src/main/java/scanner_issue_220727](https://github.com/gusah009/javaStudy/tree/master/blog/src/main/java/scanner_issue_220727)**
+**사용한 테스트 코드: [https://github.com/gusah009/javaStudy/tree/master/blog/src/test/java/scanner_issue_220727](https://github.com/gusah009/javaStudy/tree/master/blog/src/test/java/scanner_issue_220727)**
