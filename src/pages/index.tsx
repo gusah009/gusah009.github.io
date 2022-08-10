@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
+import './tailwind.css';
 
 const IndexPage: FunctionComponent = function () {
   return (
