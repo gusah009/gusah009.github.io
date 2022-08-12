@@ -15,7 +15,7 @@ const POST_ITEM_DATA = {
 const PostList: FunctionComponent = function () {
   return (
     // PostListWrapper
-    <div className=" grid grid-cols-2 gap-5 w-[768px] my-0 mx-auto pt-12 pb-24">
+    <div className=" grid grid-cols-1 md:grid-cols-2 gap-5 w-full md:w-[768px] my-0 mx-auto py-12 px-5 md:px-0 md:pt-12 md:pb-24">
       <PostItem {...POST_ITEM_DATA} />
       <PostItem {...POST_ITEM_DATA} />
       <PostItem {...POST_ITEM_DATA} />

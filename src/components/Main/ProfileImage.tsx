@@ -6,7 +6,7 @@ const PROFILE_IMAGE_LINK =
 const ProfileImage: FunctionComponent = function () {
   return (
     <img
-      className="w-32 h-32 mb-8 rounded-full"
+      className=" w-20 h-20 md:w-32 md:h-32 mb-8 rounded-full"
       src={PROFILE_IMAGE_LINK}
       alt="Profile Image"
     />
