@@ -1,21 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
+import { PostFrontmatterType } from 'types/PostItem.types';
 
-type PostItemProps = {
-  title: string;
-  date: string;
-  categories: string[];
-  summary: string;
-  thumbnail: string;
-  link: string;
-};
+type PostItemProps = PostFrontmatterType & { link: string };
 
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
   date,
   categories,
   summary,
-  thumbnail,
+  thumbnail: { publicURL },
   link,
 }) {
   return (
@@ -27,7 +21,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
       {/* ThumbnailImage */}
       <img
         className="w-full h-44 rounded-lg object-cover"
-        src={thumbnail}
+        src={publicURL}
         alt="Post Item Image"
       />
       {/* PostItemContent */}
