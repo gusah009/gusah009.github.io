@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'gatsby';
-import './tailwind.css';
+import '../tailwind.css';
+import Introduction from 'components/Main/Introduction';
+import Footer from 'components/Common/Footer';
 
 const IndexPage: FunctionComponent = function () {
   return (
-    <div>
-      <Link to="/info/">To Info</Link>
+    // Container
+    <div className="flex flex-col h-full">
+      <Introduction />
+      <Footer />
     </div>
   );
 };
