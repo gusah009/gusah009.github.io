@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import '../tailwind.css';
 import Introduction from 'components/Main/Introduction';
 import CategoryList from 'components/Main/CategoryList';
+import PostList from 'components/Main/PostList';
 import Footer from 'components/Common/Footer';
 
 const CATEGORY_LIST = {
@@ -16,6 +17,7 @@ const IndexPage: FunctionComponent = function () {
     <div className="flex flex-col h-full">
       <Introduction />
       <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST} />
+      <PostList />
       <Footer />
     </div>
   );
