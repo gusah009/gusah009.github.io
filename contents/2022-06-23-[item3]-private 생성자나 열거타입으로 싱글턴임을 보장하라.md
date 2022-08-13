@@ -1,7 +1,7 @@
 ---
 date: '2022-06-23'
 title: '[item3] private 생성자나 열거타입으로 싱글턴임을 보장하라'
-categories: ['[item3]']
+categories: ['effective java']
 summary: '저자는 싱글턴을 만들 때 private 생성자나 열거타입(enum)으로 만들길 권장하고 있습니다. 그 이유에 대해 알아보겠습니다.'
 thumbnail: './test.png'
 ---

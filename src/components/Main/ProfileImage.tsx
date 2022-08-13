@@ -1,13 +1,17 @@
 import React, { FunctionComponent } from 'react';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
-const PROFILE_IMAGE_LINK =
-  'https://avatars.githubusercontent.com/u/26597702?v=4';
+type ProfileImageProps = {
+  profileImage: IGatsbyImageData;
+};
 
-const ProfileImage: FunctionComponent = function () {
+const ProfileImage: FunctionComponent<ProfileImageProps> = function ({
+  profileImage,
+}) {
   return (
-    <img
+    <GatsbyImage
       className=" w-20 h-20 md:w-32 md:h-32 mb-8 rounded-full"
-      src={PROFILE_IMAGE_LINK}
+      image={profileImage}
       alt="Profile Image"
     />
   );
