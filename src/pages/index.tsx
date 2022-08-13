@@ -3,7 +3,7 @@ import '../tailwind.css';
 import Introduction from 'components/Main/Introduction';
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList';
 import PostList from 'components/Main/PostList';
-import Footer from 'components/Common/Footer';
+import Template from 'components/Common/Template';
 import { PostListItemType } from 'types/PostItem.types';
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
@@ -67,16 +67,14 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   );
 
   return (
-    // Container
-    <div className="flex flex-col h-full">
+    <Template>
       <Introduction profileImage={gatsbyImageData} />
       <CategoryList
         selectedCategory={selectedCategory}
         categoryList={categoryList}
       />
       <PostList selectedCategory={selectedCategory} posts={edges} />
-      <Footer />
-    </div>
+    </Template>
   );
 };
 
