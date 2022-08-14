@@ -8,7 +8,7 @@ const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
   return (
     // MarkdownRenderer
     <div
-      className="prose lg:prose-xl flex flex-col w-[768px] my-0 mx-auto py-24 px-0 break-all"
+      className="prose lg:prose-xl flex flex-col w-[768px] my-0 mx-auto py-14 px-5 md:py-16 md:px-0 break-all"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   ); /* w-md 커스텀 만들어보기 */

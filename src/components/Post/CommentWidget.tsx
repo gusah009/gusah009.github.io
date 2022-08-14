@@ -38,7 +38,7 @@ const CommentWidget: FunctionComponent = function () {
     element.current.appendChild(utterances);
   }, []);
 
-  return <div ref={element} />;
+  return <div className="py-0 px-5 md:p-0" ref={element} />;
 };
 
 export default CommentWidget;
