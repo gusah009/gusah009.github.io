@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@heroicons/react": "^1.0.6",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
