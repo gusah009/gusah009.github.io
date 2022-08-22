@@ -19,7 +19,7 @@ const Template: FunctionComponent<TemplateProps> = function ({
 }) {
   return (
     /* Container */
-    <div className="flex flex-col h-full">
+    <main className="flex flex-col h-full">
       <Helmet>
         <title>{title}</title>
 
@@ -40,11 +40,13 @@ const Template: FunctionComponent<TemplateProps> = function ({
         <meta name="twitter:image" content={image} />
         <meta name="twitter:site" content="@사용자이름" />
         <meta name="twitter:creator" content="@사용자이름" />
+
+        <html lang="ko" />
       </Helmet>
 
       {children}
       <Footer />
-    </div>
+    </main>
   );
 };
 
