@@ -3,7 +3,7 @@ module.exports = {
     title: `gusah009의 개발 블로그`,
     description: `gusah009의 개발 블로그입니다.`,
     author: `정현모`,
-    siteUrl: '<https://my-website-link.com>', // 배포 후 변경 예정
+    siteUrl: 'https://gusah009.github.io',
   },
   plugins: [
     {
@@ -86,6 +86,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/static`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://gusah009.github.io',
+        stripQueryString: true,
       },
     },
   ],

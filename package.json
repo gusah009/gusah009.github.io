@@ -16,6 +16,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gatsby": "^4.19.2",
+    "gatsby-plugin-canonical-urls": "^4.21.0",
     "gatsby-plugin-emotion": "^7.20.0",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-offline": "^5.19.0",
