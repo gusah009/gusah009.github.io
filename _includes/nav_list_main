@@ -55,7 +55,7 @@
             <ul>
             {% for category in site.categories %}
                 {% if category[0] == "PNU-pathfinder" %}
-                    <li><a href="/categories/pathfinder" class="">PNU-pathfinder ({{category[1].size}})</a></li>
+                    <li><a href="/categories/PNU-pathfinder" class="">PNU-pathfinder ({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
             </ul>
