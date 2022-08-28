@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import Footer from 'components/Common/Footer';
+import Sidebar from 'components/Common/Sidebar';
 import { Helmet } from 'react-helmet';
 
 type TemplateProps = {
@@ -43,9 +44,10 @@ const Template: FunctionComponent<TemplateProps> = function ({
 
         <html lang="ko" />
       </Helmet>
-
-      {children}
-      <Footer />
+      <Sidebar>
+        {children}
+        <Footer />
+      </Sidebar>
     </main>
   );
 };
