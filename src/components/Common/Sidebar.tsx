@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, ReactNode } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   BellIcon,
@@ -8,9 +8,31 @@ import {
 } from '@heroicons/react/outline';
 import { SearchIcon } from '@heroicons/react/solid';
 import { ClipboardListIcon } from '@heroicons/react/solid';
+const profileImg = 'https://avatars.githubusercontent.com/u/26597702?v=4';
+
+type SidebarProps = {
+  children: ReactNode;
+};
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  {
+    name: 'Home',
+    href: '/?category=All',
+    icon: HomeIcon,
+    current: true,
+  },
+  {
+    name: 'Clean Code',
+    href: '/?category=clean_code',
+    icon: HomeIcon,
+    current: false,
+  },
+  {
+    name: 'Effective Java',
+    href: '/?category=effective_java',
+    icon: HomeIcon,
+    current: false,
+  },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -22,7 +44,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const Sidebar = ({ children }: any) => {
+const Sidebar = ({ children }: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -119,12 +141,14 @@ const Sidebar = ({ children }: any) => {
       {/* Static sidebar for desktop */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex flex-col flex-grow pt-5 bg-indigo-50 overflow-y-auto">
-          <div className="flex items-center flex-shrink-0 px-4">
-            <ClipboardListIcon className="mr-3 h-8 w-auto text-blue-200" />
-            <div className="h-8 w-8 rounded-full text-blue-100 text-xl font-bold">
-              gusah009
-            </div>
+        <div className="flex flex-col flex-grow bg-white shadow-lg shadow-indigo-200 overflow-y-auto">
+          <div className="w-full flex flex-col items-center px-4 mt-10 ">
+            <img
+              className="w-20 h-20 mb-3 rounded-md"
+              src={profileImg}
+              alt="profilte"
+            />
+            <div className=" text-slate-500 text-md font-bold">gusah009</div>
           </div>
           <div className="mt-5 flex-1 flex flex-col">
             <nav className="flex-1 px-2 pb-4 space-y-1">
@@ -134,8 +158,8 @@ const Sidebar = ({ children }: any) => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? 'bg-indigo-200 text-white'
-                      : 'text-indigo-100 hover:bg-indigo-300',
+                      ? 'bg-indigo-200 text-slate-600'
+                      : 'text-slate-400 hover:bg-indigo-100',
                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                   )}
                 >
