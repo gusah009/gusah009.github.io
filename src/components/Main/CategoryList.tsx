@@ -15,16 +15,16 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({
 }) {
   return (
     // CategoryListWrapper
-    <div className="flex flex-wrap w-full md:w-[768px] mt-12 md:mt-24 mx-auto mb-0 px-5 md:px-0">
+    <div className="flex flex-wrap w-full md:w-[768px] mt-5 md:mt-10 mx-auto mb-0 px-5 md:px-0">
       {Object.entries(categoryList).map(([name, count]) => (
         // categoryItem
         <Link
           to={`/?category=${name}`}
           key={name}
-          className={`mr-5 py-1 px-0 text-sm md:text-lg cursor-pointer last-of-type:mr-0
+          className={`mr-4 py-1 px-2 rounded-md text-sm md:text-lg text-zinc-800 cursor-pointer last-of-type:mr-0
               ${name === selectedCategory ? 'font-extrabold' : 'font-normal'}`}
         >
-          #{name}({count})
+          {name} ({count})
         </Link>
       ))}
     </div>

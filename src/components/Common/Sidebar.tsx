@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/outline';
 import { SearchIcon } from '@heroicons/react/solid';
 import { ClipboardListIcon } from '@heroicons/react/solid';
+import SubCategory from './SubCategory';
 const profileImg = 'https://avatars.githubusercontent.com/u/26597702?v=4';
 
 type SidebarProps = {
@@ -19,21 +20,80 @@ const navigation = [
     name: 'Home',
     href: '/?category=All',
     icon: HomeIcon,
+    current: false,
+    subNav: null,
+  },
+  {
+    name: 'JAVA',
+    icon: HomeIcon,
+    current: false,
+    subNav: [
+      {
+        name: 'Clean Code',
+        href: '/?category=clean_code',
+        current: false,
+      },
+      {
+        name: 'Effective Java',
+        href: '/?category=effective_java',
+        current: false,
+      },
+      {
+        name: 'etc',
+        href: '/?category=etc',
+        current: false,
+      },
+    ],
+  },
+  {
+    name: 'PROJECTS',
+    icon: HomeIcon,
     current: true,
+    subNav: [
+      {
+        name: 'PNU-pathfinder',
+        href: '/?category=pathfinder',
+        current: false,
+      },
+      {
+        name: 'keeper homepage',
+        href: '/?category=keeper_homepage',
+        current: false,
+      },
+    ],
   },
   {
-    name: 'Clean Code',
-    href: '/?category=clean_code',
+    name: 'COMPUTER SCIENCE',
     icon: HomeIcon,
     current: false,
+    subNav: null,
   },
   {
-    name: 'Effective Java',
-    href: '/?category=effective_java',
+    name: 'ETC',
     icon: HomeIcon,
     current: false,
+    subNav: [
+      {
+        name: 'Git',
+        href: '/?category=Git',
+        current: false,
+      },
+    ],
+  },
+  {
+    name: '일상',
+    icon: HomeIcon,
+    current: false,
+    subNav: [
+      {
+        name: '후기',
+        href: '/?category=후기',
+        current: false,
+      },
+    ],
   },
 ];
+
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
@@ -52,7 +112,7 @@ const Sidebar = ({ children }: SidebarProps) => {
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-40 md:hidden"
+          className="relative z-40 lg:hidden"
           onClose={setSidebarOpen}
         >
           <Transition.Child
@@ -77,7 +137,7 @@ const Sidebar = ({ children }: SidebarProps) => {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-50">
+              <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -101,31 +161,20 @@ const Sidebar = ({ children }: SidebarProps) => {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex items-center flex-shrink-0 px-4">
-                  <ClipboardListIcon className="mr-3 h-8 w-auto text-blue-200" />
-                  <div className="h-8 w-8 rounded-full text-blue-100 text-xl font-bold">
+                <div className="w-full flex flex-col items-center px-4 mt-10">
+                  <img
+                    className="w-20 h-20 mb-3 rounded-md"
+                    src={profileImg}
+                    alt="profilte"
+                  />
+                  <div className=" text-slate-500 text-md font-bold">
                     gusah009
                   </div>
                 </div>
                 <div className="mt-5 flex-1 h-0 overflow-y-auto">
-                  <nav className="px-2 space-y-1">
+                  <nav className="flex-1 px-2 pb-4 space-y-1">
                     {navigation.map(item => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? 'bg-indigo-200 text-white'
-                            : 'text-indigo-100 hover:bg-indigo-300',
-                          'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                        )}
-                      >
-                        <item.icon
-                          className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
+                      <SubCategory category={item} />
                     ))}
                   </nav>
                 </div>
@@ -139,7 +188,7 @@ const Sidebar = ({ children }: SidebarProps) => {
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+      <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow bg-white shadow-lg shadow-indigo-200 overflow-y-auto">
           <div className="w-full flex flex-col items-center px-4 mt-10 ">
@@ -153,32 +202,17 @@ const Sidebar = ({ children }: SidebarProps) => {
           <div className="mt-5 flex-1 flex flex-col">
             <nav className="flex-1 px-2 pb-4 space-y-1">
               {navigation.map(item => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-indigo-200 text-slate-600'
-                      : 'text-slate-400 hover:bg-indigo-100',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                  )}
-                >
-                  <item.icon
-                    className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
+                <SubCategory category={item} />
               ))}
             </nav>
           </div>
         </div>
       </div>
-      <div className="md:pl-64 flex flex-col flex-1">
+      <div className="lg:pl-64 flex flex-col flex-1">
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
           <button
             type="button"
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 lg:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>
@@ -186,7 +220,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           </button>
           <div className="flex-1 px-4 flex justify-between">
             <div className="flex-1 flex">
-              <form className="w-full flex md:ml-0" action="#" method="GET">
+              <form className="w-full flex lg:ml-0" action="#" method="GET">
                 <label htmlFor="search-field" className="sr-only">
                   Search
                 </label>
@@ -204,7 +238,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                 </div>
               </form>
             </div>
-            <div className="ml-4 flex items-center md:ml-6">
+            <div className="ml-4 flex items-center lg:ml-6">
               <button
                 type="button"
                 className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

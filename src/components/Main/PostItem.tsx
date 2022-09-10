@@ -40,7 +40,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
           {categories.map(category => (
             // CategoryItem
             <div
-              className="my-0.5 mx-1 p-1 rounded-sm bg-black text-sm font-bold text-white"
+              className="my-0.5 py-1 px-2 rounded-md bg-teal-700 text-sm font-semibold text-white"
               key={category}
             >
               {category}
