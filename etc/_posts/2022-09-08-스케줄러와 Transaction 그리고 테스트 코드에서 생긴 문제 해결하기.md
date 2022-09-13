@@ -243,7 +243,7 @@ class MemberServiceTest {
 
 **예상 시나리오**는 아래와 같습니다.
 
-<img width="888" alt="image" src="https://user-images.githubusercontent.com/26597702/189912720-530871f5-2a89-4a8d-a0b9-cb9bf83d242a.png">
+<img width="888" alt="image" src="https://user-images.githubusercontent.com/26597702/189916238-c6906413-7097-4d58-a7b3-f79bb4c63352.png">
 
 `스케줄러 트랜잭션`에서 `테스트 트랜잭션`의 커밋되지 않은 데이터를 보려면 고립 수준을 `READ UNCOMMITED`로 바꿔야 한다는 점에서 착안하였습니다.
 
