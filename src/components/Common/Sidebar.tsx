@@ -4,95 +4,19 @@ import {
   BellIcon,
   HomeIcon,
   MenuAlt2Icon,
+  ChevronRightIcon,
   XIcon,
 } from '@heroicons/react/outline';
 import { SearchIcon } from '@heroicons/react/solid';
 import { ClipboardListIcon } from '@heroicons/react/solid';
 import SubCategory from './SubCategory';
+import { Tab, Disclosure } from '@headlessui/react';
+import { Link } from 'gatsby';
 const profileImg = 'https://avatars.githubusercontent.com/u/26597702?v=4';
 
 type SidebarProps = {
   children: ReactNode;
 };
-
-const navigation = [
-  {
-    name: 'Home',
-    href: '/?category=All',
-    icon: HomeIcon,
-    current: false,
-    subNav: null,
-  },
-  {
-    name: 'JAVA',
-    icon: HomeIcon,
-    current: false,
-    subNav: [
-      {
-        name: 'Clean Code',
-        href: '/?category=clean_code',
-        current: false,
-      },
-      {
-        name: 'Effective Java',
-        href: '/?category=effective_java',
-        current: false,
-      },
-      {
-        name: 'etc',
-        href: '/?category=etc',
-        current: false,
-      },
-    ],
-  },
-  {
-    name: 'PROJECTS',
-    icon: HomeIcon,
-    current: true,
-    subNav: [
-      {
-        name: 'PNU-pathfinder',
-        href: '/?category=pathfinder',
-        current: false,
-      },
-      {
-        name: 'keeper homepage',
-        href: '/?category=keeper_homepage',
-        current: false,
-      },
-    ],
-  },
-  {
-    name: 'COMPUTER SCIENCE',
-    icon: HomeIcon,
-    current: false,
-    subNav: null,
-  },
-  {
-    name: 'ETC',
-    icon: HomeIcon,
-    current: false,
-    subNav: [
-      {
-        name: 'Git',
-        href: '/?category=Git',
-        current: false,
-      },
-    ],
-  },
-  {
-    name: '일상',
-    icon: HomeIcon,
-    current: false,
-    subNav: [
-      {
-        name: '후기',
-        href: '/?category=후기',
-        current: false,
-      },
-    ],
-  },
-];
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -106,6 +30,46 @@ function classNames(...classes: string[]) {
 
 const Sidebar = ({ children }: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const categories = {
+    Home: [],
+    JAVA: [
+      {
+        name: 'Clean Code',
+        href: '/?category=clean_code',
+      },
+      {
+        name: 'Effective Java',
+        href: '/?category=effective_java',
+      },
+      {
+        name: 'etc',
+        href: '/?category=etc',
+      },
+    ],
+    PROJECTS: [
+      {
+        name: 'PNU-pathfinder',
+        href: '/?category=pathfinder',
+      },
+      {
+        name: 'keeper homepage',
+        href: '/?category=keeper_homepage',
+      },
+    ],
+    'COMPUTER SCIENCE': [],
+    ETC: [
+      {
+        name: 'Git',
+        href: '/?category=Git',
+      },
+    ],
+    일상: [
+      {
+        name: '후기',
+        href: '/?category=후기',
+      },
+    ],
+  };
 
   return (
     <div>
@@ -167,17 +131,55 @@ const Sidebar = ({ children }: SidebarProps) => {
                     src={profileImg}
                     alt="profilte"
                   />
-                  <div className=" text-slate-500 text-md font-bold">
+                  <div className=" text-slate-900 text-md font-bold">
                     gusah009
                   </div>
                 </div>
-                <div className="mt-5 flex-1 h-0 overflow-y-auto">
-                  <nav className="flex-1 px-2 pb-4 space-y-1">
-                    {navigation.map(item => (
-                      <SubCategory category={item} />
-                    ))}
-                  </nav>
+                {/*  SubNav -> */}
+                <div className="w-full px-5 pt-12">
+                  {Object.entries(categories).map(
+                    ([category, SubCategories]) => (
+                      <Disclosure key={category}>
+                        {({ open }) => (
+                          <Fragment>
+                            <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 ui-not-open:bg-white ui-open:bg-slate-300">
+                              <span>{category}</span>
+                              <ChevronRightIcon
+                                className={`${
+                                  open ? 'rotate-90 transform' : ''
+                                } h-5 w-5 text-slate-500`}
+                              />
+                            </Disclosure.Button>
+                            <Tab.Group vertical>
+                              <div className=" bg-slate-100 rounded-b-md">
+                                {SubCategories.map(subCategory => (
+                                  <Disclosure.Panel key={subCategory.name}>
+                                    <Link to={subCategory.href}>
+                                      <Tab
+                                        key={subCategory.name}
+                                        className={({ selected }) =>
+                                          classNames(
+                                            selected
+                                              ? 'bg-slate-200 text-slate-600'
+                                              : 'text-slate-400 hover:bg-slate-200',
+                                            'w-full group flex items-center px-4 py-2 text-sm font-medium',
+                                          )
+                                        }
+                                      >
+                                        {subCategory.name}
+                                      </Tab>
+                                    </Link>
+                                  </Disclosure.Panel>
+                                ))}
+                              </div>
+                            </Tab.Group>
+                          </Fragment>
+                        )}
+                      </Disclosure>
+                    ),
+                  )}
                 </div>
+                {/* <- SubNav */}
               </Dialog.Panel>
             </Transition.Child>
             <div className="flex-shrink-0 w-14" aria-hidden="true">
@@ -190,22 +192,58 @@ const Sidebar = ({ children }: SidebarProps) => {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex flex-col flex-grow bg-white shadow-lg shadow-indigo-200 overflow-y-auto">
+        <div className="flex flex-col flex-grow bg-white shadow-lg shadow-slate-200 overflow-y-auto">
           <div className="w-full flex flex-col items-center px-4 mt-10 ">
             <img
               className="w-20 h-20 mb-3 rounded-md"
               src={profileImg}
               alt="profilte"
             />
-            <div className=" text-slate-500 text-md font-bold">gusah009</div>
+            <div className=" text-slate-900 text-md font-bold">gusah009</div>
           </div>
-          <div className="mt-5 flex-1 flex flex-col">
-            <nav className="flex-1 px-2 pb-4 space-y-1">
-              {navigation.map(item => (
-                <SubCategory category={item} />
-              ))}
-            </nav>
+          {/*  SubNav -> */}
+          <div className="w-full px-3 pt-12">
+            {Object.entries(categories).map(([category, SubCategories]) => (
+              <Disclosure key={category}>
+                {({ open }) => (
+                  <Fragment>
+                    <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 ui-open:bg-slate-300">
+                      <span>{category}</span>
+                      <ChevronRightIcon
+                        className={`${
+                          open ? 'rotate-90 transform' : ''
+                        } h-5 w-5 text-slate-500`}
+                      />
+                    </Disclosure.Button>
+                    <Tab.Group vertical>
+                      <div className=" bg-slate-100 rounded-b-md">
+                        {SubCategories.map(subCategory => (
+                          <Disclosure.Panel key={subCategory.name}>
+                            <Link to={subCategory.href}>
+                              <Tab
+                                key={subCategory.name}
+                                className={({ selected }) =>
+                                  classNames(
+                                    selected
+                                      ? 'bg-slate-200 text-slate-600'
+                                      : 'text-slate-400 hover:bg-slate-200',
+                                    'w-full group flex items-center px-4 py-2 text-sm font-medium',
+                                  )
+                                }
+                              >
+                                {subCategory.name}
+                              </Tab>
+                            </Link>
+                          </Disclosure.Panel>
+                        ))}
+                      </div>
+                    </Tab.Group>
+                  </Fragment>
+                )}
+              </Disclosure>
+            ))}
           </div>
+          {/* <- SubNav */}
         </div>
       </div>
       <div className="lg:pl-64 flex flex-col flex-1">
