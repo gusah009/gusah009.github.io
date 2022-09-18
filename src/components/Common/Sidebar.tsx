@@ -30,6 +30,7 @@ function classNames(...classes: string[]) {
 
 const Sidebar = ({ children }: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarForDeskOpen, setSidebarForDeskOpen] = useState(true);
   const categories = {
     Home: [],
     JAVA: [
@@ -190,7 +191,13 @@ const Sidebar = ({ children }: SidebarProps) => {
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+      <div
+        className={`hidden ${
+          sidebarForDeskOpen
+            ? 'lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0'
+            : ''
+        }`}
+      >
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow bg-white shadow-lg shadow-slate-200 overflow-y-auto">
           <div className="w-full flex flex-col items-center px-4 mt-10 ">
@@ -246,7 +253,12 @@ const Sidebar = ({ children }: SidebarProps) => {
           {/* <- SubNav */}
         </div>
       </div>
-      <div className="lg:pl-64 flex flex-col flex-1">
+
+      <div
+        className={` ${
+          sidebarForDeskOpen ? 'lg:pl-64' : ''
+        } flex flex-col flex-1`}
+      >
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
           <button
             type="button"
@@ -255,6 +267,26 @@ const Sidebar = ({ children }: SidebarProps) => {
           >
             <span className="sr-only">Open sidebar</span>
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className={`px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hidden ${
+              sidebarForDeskOpen ? '' : 'lg:block'
+            }`}
+            onClick={() => setSidebarForDeskOpen(true)}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className={`border-r rounded-r-md border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hidden ${
+              sidebarForDeskOpen ? 'lg:block' : ''
+            } `}
+            onClick={() => setSidebarForDeskOpen(false)}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <XIcon className="h-5 w-5" aria-hidden="true" />
           </button>
           <div className="flex-1 px-4 flex justify-between">
             <div className="flex-1 flex">
