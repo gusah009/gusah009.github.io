@@ -69,8 +69,8 @@
         <span class="nav__sub-title">Computer Science</span>
             <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "computer science" %}
-                      <li><a href="/categories/cs" class="">Computer Science ({{category[1].size}})</a></li>
+                  {% if category[0] == "cs" %}
+                      <li><a href="/categories/cs" class="">CS 기초 ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
             </ul>
