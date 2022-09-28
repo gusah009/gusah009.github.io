@@ -1,6 +1,9 @@
 ---
 title: "스케줄러와 Transaction 그리고 테스트 코드에서 생긴 문제 해결하기"
-tags: "트러블슈팅"
+tags: 
+  - backend
+  - projects
+  - 트러블슈팅
 toc_label: ""
 toc: false
 toc_sticky: false
