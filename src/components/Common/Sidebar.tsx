@@ -143,7 +143,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                       <Disclosure key={category}>
                         {({ open }) => (
                           <Fragment>
-                            <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 ui-not-open:bg-white ui-open:bg-slate-300">
+                            <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 ui-not-open:bg-white">
                               <span>{category}</span>
                               <ChevronRightIcon
                                 className={`${
@@ -152,7 +152,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                               />
                             </Disclosure.Button>
                             <Tab.Group vertical>
-                              <div className=" bg-slate-100 rounded-b-md">
+                              <div className="ml-4 border-l-2">
                                 {SubCategories.map(subCategory => (
                                   <Disclosure.Panel key={subCategory.name}>
                                     <Link to={subCategory.href}>
@@ -161,9 +161,9 @@ const Sidebar = ({ children }: SidebarProps) => {
                                         className={({ selected }) =>
                                           classNames(
                                             selected
-                                              ? 'bg-slate-200 text-slate-600'
-                                              : 'text-slate-400 hover:bg-slate-200',
-                                            'w-full group flex items-center px-4 py-2 text-sm font-medium',
+                                              ? 'text-slate-600 font-bold'
+                                              : 'text-slate-400 hover:bg-slate-200 font-medium',
+                                            'w-full group flex items-center px-4 py-2 text-sm',
                                           )
                                         }
                                       >
@@ -214,7 +214,7 @@ const Sidebar = ({ children }: SidebarProps) => {
               <Disclosure key={category}>
                 {({ open }) => (
                   <Fragment>
-                    <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 ui-open:bg-slate-300">
+                    <Disclosure.Button className="flex mt-1 w-full justify-between ui-not-open:rounded-md ui-open:rounded-t-md px-4 py-2 text-left text-sm font-medium text-slate-900 hover:bg-slate-200">
                       <span>{category}</span>
                       <ChevronRightIcon
                         className={`${
@@ -223,7 +223,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                       />
                     </Disclosure.Button>
                     <Tab.Group vertical>
-                      <div className=" bg-slate-100 rounded-b-md">
+                      <div className="ml-4 border-l-2">
                         {SubCategories.map(subCategory => (
                           <Disclosure.Panel key={subCategory.name}>
                             <Link to={subCategory.href}>
@@ -232,9 +232,9 @@ const Sidebar = ({ children }: SidebarProps) => {
                                 className={({ selected }) =>
                                   classNames(
                                     selected
-                                      ? 'bg-slate-200 text-slate-600'
-                                      : 'text-slate-400 hover:bg-slate-200',
-                                    'w-full group flex items-center px-4 py-2 text-sm font-medium',
+                                      ? 'text-slate-600 font-extrabold'
+                                      : 'text-slate-400 hover:bg-slate-200 font-medium',
+                                    'w-full group flex items-center px-4 py-2 text-sm',
                                   )
                                 }
                               >
