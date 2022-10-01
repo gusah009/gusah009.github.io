@@ -115,12 +115,12 @@ const Sidebar = ({ children }: SidebarProps) => {
                   <div className="absolute top-0 right-0 -mr-12 pt-2">
                     <button
                       type="button"
-                      className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                      className="hidden -ml-24 md:flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                       onClick={() => setSidebarOpen(false)}
                     >
                       <span className="sr-only">Close sidebar</span>
                       <XIcon
-                        className="h-6 w-6 text-white"
+                        className="h-6 w-6 text-black"
                         aria-hidden="true"
                       />
                     </button>
@@ -130,7 +130,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                   <img
                     className="w-20 h-20 mb-3 rounded-md"
                     src={profileImg}
-                    alt="profilte"
+                    alt="profile"
                   />
                   <div className=" text-slate-900 text-md font-bold">
                     gusah009
@@ -198,6 +198,16 @@ const Sidebar = ({ children }: SidebarProps) => {
             : ''
         }`}
       >
+        <div className="absolute top-0 right-0 -mr-12 pt-2">
+          <button
+            type="button"
+            className="-ml-[90px] flex items-center justify-center h-8 w-8 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            onClick={() => setSidebarForDeskOpen(false)}
+          >
+            <span className="sr-only">Close sidebar</span>
+            <XIcon className="h-6 w-6 text-black" aria-hidden="true" />
+          </button>
+        </div>
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow bg-white shadow-lg shadow-slate-200 overflow-y-auto">
           <div className="w-full flex flex-col items-center px-4 mt-10 ">
@@ -277,16 +287,6 @@ const Sidebar = ({ children }: SidebarProps) => {
           >
             <span className="sr-only">Open sidebar</span>
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className={`border-r rounded-r-md border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hidden ${
-              sidebarForDeskOpen ? 'lg:block' : ''
-            } `}
-            onClick={() => setSidebarForDeskOpen(false)}
-          >
-            <span className="sr-only">Open sidebar</span>
-            <XIcon className="h-5 w-5" aria-hidden="true" />
           </button>
           <div className="flex-1 px-4 flex justify-between">
             <div className="flex items-center">
