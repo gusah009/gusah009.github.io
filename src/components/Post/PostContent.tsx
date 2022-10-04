@@ -76,8 +76,8 @@ const MarkdownRenderer = styled.div`
     color: #4263eb;
     text-decoration: underline;
   }
-
-  // Adjust Code Style
+`;
+/* // Adjust Code Style
   pre[class*='language-'] {
     margin: 10px 0;
     padding: 15px;
@@ -116,9 +116,7 @@ const MarkdownRenderer = styled.div`
     padding: 2px 4px;
     background: #e2e2e2;
     color: #f44;
-  }
-`;
-
+  } */
 const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
   return (
     // MarkdownRenderer
