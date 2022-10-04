@@ -78,24 +78,23 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     [],
   );
 
-  return '🚧 공사중 🚧';
-  {
-    /* <Template
+  return (
+    <Template
       title={title}
       description={description}
       url={siteUrl}
       image={publicURL}
     >
       <Introduction profileImage={gatsbyImageData} />
-      --> 삭제
+      {/* --> 삭제
       <CategoryList
         selectedCategory={selectedCategory}
         categoryList={categoryList}
       />
-      <--
+      <-- */}
       <PostList selectedCategory={selectedCategory} posts={edges} />
-    </Template> */
-  }
+    </Template>
+  );
 };
 
 export default IndexPage;
