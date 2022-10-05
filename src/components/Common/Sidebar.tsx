@@ -18,12 +18,6 @@ type SidebarProps = {
   children: ReactNode;
 };
 
-const userNavigation = [
-  { name: 'whoami', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '/signIn' },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
@@ -269,7 +263,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           sidebarForDeskOpen ? 'lg:pl-64' : ''
         } flex flex-col flex-1`}
       >
-        <div className="sticky top-0 z-10 flex-shrink-0 flex h-12 shadow">
+        <div className="sticky top-0 z-10 flex-shrink-0 flex h-12 bg-white shadow">
           <button
             type="button"
             className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 lg:hidden"
@@ -288,50 +282,6 @@ const Sidebar = ({ children }: SidebarProps) => {
             <span className="sr-only">Open sidebar</span>
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 px-4 flex justify-between">
-            <div className="flex items-center">
-              {/* Profile dropdown */}
-              <Menu as="div" className="mr-2 absolute right-0">
-                <div>
-                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src={profileImg}
-                      alt=""
-                    />
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    {userNavigation.map(item => (
-                      <Menu.Item key={item.name}>
-                        {({ active }) => (
-                          <a
-                            href={item.href}
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700',
-                            )}
-                          >
-                            {item.name}
-                          </a>
-                        )}
-                      </Menu.Item>
-                    ))}
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </div>
-          </div>
         </div>
 
         <main>
