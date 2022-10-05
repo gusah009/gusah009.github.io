@@ -2,7 +2,7 @@
 date: '2022-08-01'
 title: '[item39] 명명 패턴보다 Annotation을 사용하라'
 categories: ['effective_java']
-summary: '`Annotation`이 나오기 전 `Java`에서는 어떤 도구나 프레임워크가 해당 코드를 다룰 수 있게 명명 패턴을 적용해 왔습니다. 명명 패턴은 간단히 말해 이름을 'test' 로 시작하게 하는 것 처럼 이름으로 그 역할을 구분하는 것입니다.'
+summary: '`Annotation`이 나오기 전 `Java`에서는 어떤 도구나 프레임워크가 해당 코드를 다룰 수 있게 명명 패턴을 적용해 왔습니다.'
 thumbnail: './effective_java_thumb.png'
 ---
 
