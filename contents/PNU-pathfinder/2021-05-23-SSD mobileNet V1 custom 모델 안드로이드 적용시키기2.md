@@ -47,7 +47,8 @@ snake
 ```shell
 git clone "https://github.com/tensorflow/examples"
 ```
-추가로  l`ite/examples/object_detection/android/src/main/java/org/tensorflow/lite/examples/detection/DetectorActivity.java` 파일 안에 `TF_OD_API_IS_QUANTIZED = false`로 바꿔주시면 됩니다.
+추가로  `lite/examples/object_detection/android/src/main/java/org/tensorflow`
+`/lite/examples/detection/DetectorActivity.java` 파일 안에 `TF_OD_API_IS_QUANTIZED = false`로 바꿔주시면 됩니다.
 ```java
 private static final boolean TF_OD_API_IS_QUANTIZED = false;
 ```

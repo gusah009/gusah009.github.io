@@ -80,15 +80,15 @@ pip install scipy
 우선 폴더구조를 아래와 같이 생성합니다.
 
 > models \
-\\--- annotations \
-\\--- images \
-\\------ train \
-\\------ test \
-\\--- checkpoints \
-\\--- tf_record \
-\\--- research \
-\\--- data \
-\\--- ...
+> \\--- annotations \
+> \\--- images \
+> \\------ train \
+> \\------ test \
+> \\--- checkpoints \
+> \\--- tf_record \
+> \\--- research \
+> \\--- data \
+> \\--- ...
     
 
 images 아래에 train과 test를 적절한 비율 (7:3)으로 나누어 저장합니다. (이 때, 이미지 파일들은 1부터 순서대로 존재해야합니다!)
@@ -243,5 +243,7 @@ session = InteractiveSession(config=config)
 이런 화면이 뜨면서 학습이 진행되시면 됩니다. 다음 글은 학습이 끝난 이후에 다시 작성하겠습니다.
 
 출처: [https://seoftware.tistory.com/108](https://seoftware.tistory.com/108),
+
 [https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android),
+
 [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md)
