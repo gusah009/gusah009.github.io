@@ -40,20 +40,76 @@ thumbnail: './effective_java_thumb.png'
 
 ### 안전망 역할로서 `Cleaner`의 사용
 
-<script src="https://gist.github.com/gusah009/ac0149528b2ca3c2d11685109514f417.js"></script>
+```java
+public class Room implements AutoCloseable {
+
+  private static final Cleaner cleaner = Cleaner.create();
+
+  private static class State implements Runnable {
+
+    int numJunkPiles; // 방(Room) 안의 쓰레기 수
+
+    public State(int numJunkPiles) {
+      this.numJunkPiles = numJunkPiles;
+    }
+
+    // close 메소드나 cleaner가 호출한다.
+    @Override
+    public void run() {
+      System.out.println("방 청소");
+      numJunkPiles = 0;
+    }
+  }
+
+  //방의 상태. cleanable와 공유한다.
+  private final State state;
+
+  // cleanable 객체. 수거 대상이 되면 방을 청소한다.
+  private final Cleaner.Cleanable cleanable;
+
+  public Room(int numJunkPiles) {
+    this.state = new State(numJunkPiles);
+    this.cleanable = cleaner.register(this, state);
+  }
+
+  @Override
+  public void close() throws Exception {
+    cleanable.clean();
+  }
+}
+```
 
 위와 같이 `AutoCloseable`을 구현한 `Room` 클래스가 있다고 가정하겠습니다. 해당 클래스는 생성자에서 `cleaner`에 자기 자신과 청소가 필요한 자원인 `State`를 등록하고 있습니다. 이후 해당 클래스가 `close()`될 때 `State.run()`을 수행합니다.
 
 이는 단순히 안전망 역할만 합니다. 당연히 `try-with-resources` 블럭으로 감쌌다면 즉시 해당 자원이 해제되기 때문에 안전망이 필요하지 않습니다. 아래는 안전망이 필요하지 않은 예시와 그 결과입니다.
 
-<script src="https://gist.github.com/gusah009/997b4abb237a3574d695b82f577def83.js"></script>
+```java
+public class Adult {
+
+  public static void main(String[] args) {
+    try (Room myRoom = new Room(99)) {
+      System.out.println("어른");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}
+```
 
 ```
 어른
 방 청소
 ```
 
-<script src="https://gist.github.com/gusah009/dab4e7d54b368af4417cc488f15eea6b.js"></script>
+```java
+public class Child {
+
+  public static void main(String[] args) {
+    new Room(99);
+    System.out.println("아이");
+  }
+}
+```
 
 ```
 아이

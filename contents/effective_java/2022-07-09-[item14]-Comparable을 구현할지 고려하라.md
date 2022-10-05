@@ -33,17 +33,83 @@ thumbnail: './effective_java_thumb.png'
 
 하지만 `Java 7`부턴 달라집니다. 기본적으로 제공해주는 `compareTo()`메서드를 활용하면 쉽게 정렬을 위한 `compareTo`를 작성할 수 있습니다. **크다, 작다**라는 헷갈릴 수 있는 상황에서 벗어나게 해줍니다. 아래는 이번 장을 공부하고 PS에 바로 사용한 코드입니다. `Ticket`이라는 클래스에는 문자열인 `dst`와 `isUsed`라는 필드가 있는데, 정렬은 `dst` 기준으로만 하고 싶을 때 아래와 같이 코드를 작성할 수 있었습니다.
 
-<script src="https://gist.github.com/gusah009/9f7509393675bcf598b7a18ff4fc17fa.js"></script>
+```java
+class Ticket implements Comparable {
+
+  String dst;
+  boolean isUsed;
+
+  public Ticket(String dst, boolean isUsed) {
+    this.dst = dst;
+    this.isUsed = isUsed;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    return dst.compareTo(((Ticket) o).dst);
+  }
+}
+```
 
 ## 클래스를 확장 했을 떄 `Comparable` 문제
 아래와 같은 코드가 있다고 가정해보겠습니다.
-<script src="https://gist.github.com/gusah009/782e4b0b68f15706c9fb9ddc9233650b.js"></script>
+```java
+@AllArgsConstructor
+public class Point implements Comparable<Point> {
 
-<script src="https://gist.github.com/gusah009/23699c606ebb663e2997d6d5a619d11e.js"></script>
+  public Integer x;
+  public Integer y;
+
+  @Override
+  public int compareTo(Point o) {
+    if (x.compareTo(o.x) == 0) {
+      return y.compareTo(o.y);
+    }
+    return x.compareTo(o.x);
+  }
+}
+```
+
+```java
+public class PointColor extends Point implements Comparable<Point> {
+
+  public String color;
+
+  public PointColor(Integer x, Integer y, String color) {
+    super(x, y);
+    this.color = color;
+  }
+
+  @Override
+  public int compareTo(Point o) {
+    int result = super.compareTo(o);
+    if (result == 0) {
+      return color.compareTo(((PointColor) o).color);
+    }
+    return result;
+  }
+}
+```
 
 위와 같이 코드가 있을 때, `compareTo` 규약을 지킬 수 없습니다. 아래 예시를 보겠습니다.
 
-<script src="https://gist.github.com/gusah009/8729d7c4fa6ea2901d795e7bd8f9460a.js"></script>
+```java
+class PointColorTest {
+
+  public static void main(String[] args) {
+    Point point = new Point(1, 2);
+    PointColor pointColor = new PointColor(1, 2, "RED");
+
+    System.out.println("point.compareTo(pointColor): " + point.compareTo(pointColor) + " == " + 0);
+
+    try {
+      System.out.println(pointColor.compareTo(point) + " == " + 0);
+    } catch (ClassCastException e) {
+      System.out.println("ClassCastException");
+    }
+  }
+}
+```
 
 위 코드의 결과는 아래와 같습니다.
 ```
@@ -52,7 +118,22 @@ ClassCastException
 ```
 위와 같은 현상이 발생하는 이유는, `compareTo`를 재정의하는 과정에서 `ClassCastException`이 발생할 수 있는 코드를 작성하게 되기 때문입니다. 따라서 위 코드는 아래와 같이 수정되어야 규약을 지킬 수 있습니다.
 
-<script src="https://gist.github.com/gusah009/ded7c5548290ce1bab3de057d8509229.js"></script>
+```java
+public class GoodPointColor implements Comparable<GoodPointColor> {
+
+  Point point;
+  String color;
+
+  @Override
+  public int compareTo(GoodPointColor o) {
+    int result = point.compareTo(o.point);
+    if (result == 0) {
+      return color.compareTo(o.color);
+    }
+    return result;
+  }
+}
+```
 
 위와 같이 `GoodPointColor`처럼 사용하여야 서로 다른 `Class`에 대한 `compareTo` 비교를 컴파일 단계에서 막을 수 있습니다.
 ## 요약

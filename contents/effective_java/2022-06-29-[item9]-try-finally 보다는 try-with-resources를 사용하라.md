@@ -13,14 +13,42 @@ thumbnail: './effective_java_thumb.png'
 ## 옛날 수단: `try-finally`
 옛날에는 자원의 닫힘을 보장하는 수단으로 `try-finally`가 많이 쓰였습니다. 하지만 두 개 이상의 자원을 닫을 일이 있다면 아래 코드와 같이 **매우 지저분해집니다.**
 
-<script src="https://gist.github.com/gusah009/84bf80bd76b5f62a05f94a4cd6abf0e1.js"></script>
+```java
+static void copy(String src, String dst) throws IOException {
+  InputStream in = new FileInputStream(src);
+  try {
+    OutputStream out = new FileOutputStream(dst);
+    try {
+      byte[] buf = new byte[BUFFER_SIZE];
+      int n;
+      while ((n = in.read(buf)) >= 0)
+        out.write(buf, 0, n);
+    } finally {
+      out.close();
+    }
+  } finally {
+    in.close();
+  }
+}
+```
 
 자원이 만약 3개, 4개, ... 그 이상으로 많아진다면 더더욱 지저분해질 것입니다. 이를 위해 `Java7`부터 `try-with-resources`가 등장하게 되었습니다.
 
 ## 요즘 수단: `try-with-resources`
 위의 코드에 `try-with-resources`를 적용한 코드입니다.
 
-<script src="https://gist.github.com/gusah009/88d1a1939e82ede405bd06af4a7e283e.js"></script>
+```java
+static void advanceCopy(String src, String dst) throws IOException {
+  try (InputStream in = new FileInputStream(src);
+      OutputStream out = new FileOutputStream(dst)) {
+    byte[] buf = new byte[BUFFER_SIZE];
+    int n;
+    while ((n = in.read(buf)) >= 0) {
+      out.write(buf, 0, n);
+    }
+  }
+}
+```
 
 물론, 앞선 `try-finally`와 마찬가지로 `catch`문도 적용하여 쓸 수 있습니다.
 

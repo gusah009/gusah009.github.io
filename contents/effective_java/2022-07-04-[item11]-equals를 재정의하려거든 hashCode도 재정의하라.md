@@ -15,7 +15,16 @@ thumbnail: './effective_java_thumb.png'
 
 여기서 중요한 점은 바로 **"매핑"**입니다. **어떤 길이의 데이터라도 고정된 데이터로 바뀐다는 점**과 **같은 값을 넣으면 같은 결과를 가진다**는 성질 때문에 빠르게 데이터를 검색할 수 있다는 특징도 있습니다.
 
-<script src="https://gist.github.com/gusah009/d25d854df0ae93a4b1905d2662dda554.js"></script>
+```java
+public static int hashCode(byte[] value) {
+  int h = 0;
+  int length = value.length >> 1;
+  for (int i = 0; i < length; i++) {
+      h = 31 * h + getChar(value, i);
+  }
+  return h;
+}
+```
 
 위 코드는 실제 `String`클래스에 정의된 `hashCode` 메서드 입니다. 전체 길이의 절반만큼 for문을 돌면서 각 문자의 ascii값을 hash코드로 추가해주고 있는 모습입니다. 코드를 보면 **31**을 곱해주고 있는 부분이 보입니다. 왜 그런 지 살펴보겠습니다.
 

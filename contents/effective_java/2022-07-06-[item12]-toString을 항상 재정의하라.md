@@ -10,7 +10,13 @@ thumbnail: './effective_java_thumb.png'
 
 `java`에서는 어떤 객체를 문자열로 출력할 때를 대비해서 `toString` 메서드를 지원합니다. 하지만 `Object` 클래스에서 기본적으로 제공하는 `toString`메서드는 아래와 같이 클래스의 이름과 해당 객체의 해쉬코드를 반환하기 때문에 **알아보기 힘듭니다.**
 
-<script src="https://gist.github.com/gusah009/5dd37eaa571a414668bc269ab019c38c.js"></script>
+```java
+public class Object {
+  public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+  }
+}
+```
 
 보통 사용자가 객체를 문자열로 출력할 때 원하는 것은 각 필드엔 어떤 값이 있는지, 혹은 사람이 알아 보기 쉬운 객체의 정보를 원합니다. 따라서 책의 저자는 될 수 있으면 반드시 `toString`을 재정의하라고 하고 있습니다.
 

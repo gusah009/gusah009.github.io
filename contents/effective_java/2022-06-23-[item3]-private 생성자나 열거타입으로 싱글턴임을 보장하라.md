@@ -19,7 +19,15 @@ thumbnail: './effective_java_thumb.png'
 결론부터 말씀드리면, 저자가 생각하는 가장 좋은 싱글턴 패턴은 **열거 타입**을 사용하는 것입니다. 위의 싱글턴을 만드는 방식에 대해 하나하나 알아보면서 각각 어떤 장단점이 있는 지 알아보겠습니다.
 
 ## public static final 필드 방식의 싱글턴
-<script src="https://gist.github.com/gusah009/1f7e3efcc5f36fc28483f8afb7c35509.js"></script>
+```java
+public class MyDate {
+
+  public static final MyDate INSTANCE = new MyDate();
+  private MyDate() {} // private 생성자
+
+  public long getNextMonth() {...}
+}
+```
 
 `private` 생성자는 `MyDate.INSTANCE`를 생성할 때 단 한번만 호출되고, `public`이나 `protected` 생성자가 없기 때문에 항상 시스템엔 `MyDate`의 객체가 하나임이 보장됩니다. 하지만 `setAccessible`이란 리플렉션 API를 사용하면 `private` 생성자를 호출할 수 있는데, 이 내용에 대해선 뒤에 배웁니다.
 
@@ -27,7 +35,16 @@ thumbnail: './effective_java_thumb.png'
 해당 클래스가 싱글턴임이 API에 명백히 드러난다는 장점이 있습니다. public static 필드가 final이니 절대 다른 객체를 참조할 수 없음을 한 눈에 확인할 수 있습니다. 또 간결함이 가장 큰 장점입니다.
 
 ## 정적 팩터리 메서드 방식의 싱글턴
-<script src="https://gist.github.com/gusah009/f15488726c7055f44b64a15b22aa36e8.js"></script>
+```java
+public class MyDate {
+
+  private static final MyDate INSTANCE = new MyDate();
+  private MyDate() {} // private 생성자
+  public static MyDate getInstance() { return INSTANCE; }
+
+  public long getNextMonth() {...}
+}
+```
 
 `INSTANCE`가 `private`이기 때문에 이를 호출하는 방식은 `getInstance()`밖에 없습니다. 위와 무슨 차이가 있는거지? 하실 수 있기 때문에 아래에서 정적 팩터리 메서드 방식의 장점을 바로 살펴보겠습니다.
 
@@ -43,7 +60,13 @@ thumbnail: './effective_java_thumb.png'
 
 ## 열거 타입 방식의 싱글턴
 결국 저자가 권유하는 싱글턴 생성 방식은 열거타입(enum)입니다.
-<script src="https://gist.github.com/gusah009/cf50a9e2ae0ac18e94878b508448be7e.js"></script>
+```java
+public enum MyDate {
+  BIRTHDAY, HAPPY_DAY;
+
+  public long getNextMonth() {...}
+}
+```
 
 아래와 같이 특정 `Instance`를 싱글턴 형식으로 사용할 수 있으며, 앞서 봤던 단점들인 아주 복잡한 직렬화 상황이나 리플렉션 공격에서도 제2의 인스턴스가 생기는 일을 완벽히 막아줍니다. 저자는 **부자연스러워 보일 순 있지만 대부분의 상황에서 원소가 하나뿐인 열거 타입이 싱글턴을 만드는 가장 좋은 방법**이라고 말하고 있습니다.
 

@@ -19,7 +19,13 @@ thumbnail: './effective_java_thumb.png'
 ## 자바 플랫폼 라이브러리에서 규약을 어긴 사례
 실제로 `java.awt.package`의 `Dimension` 클래스에서 위 규약을 어기고 있습니다. 아래 코드를 보면 필드를 `public`으로 열어놨는데 이 실수로 인한 심각한 성능 문제는 오늘날까지도 해결되지 못했습니다.
 
-<script src="https://gist.github.com/gusah009/22b1d41d3b8590ecb34f3e31216c2645.js"></script>
+```java
+public class Dimension extends Dimension2D implements java.io.Serializable {
+
+  public int width;
+  public int height;
+}
+```
 
 ## 요약
 `public` 클래스는 절대 가변 필드를 직접 노출해서는 안됩니다. 불변 필드라면 노출해도 덜 위험하지만 완전히 안심할 수는 없습니다. 하지만 `package-private` 클래스나 `private` 중첩 글래스에서는 종종 필드를 노출하는 편이 나을 때도 있습니다.
