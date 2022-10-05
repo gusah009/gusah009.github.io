@@ -11,7 +11,7 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({
 }) {
   return (
     // Background
-    <div className=" absolute top-0 w-full bg-gradient-to-bl from-gray-700 via-gray-900 to-black text-white">
+    <div className="w-full bg-gradient-to-bl from-gray-700 via-gray-900 to-black text-white">
       {/* // Wrapper */}
       <div className="flex flex-col justify-center items-start w-full h-72 md:w-[768px] md:h-96 m-auto px-5 md:px-0">
         <ProfileImage profileImage={profileImage} />
