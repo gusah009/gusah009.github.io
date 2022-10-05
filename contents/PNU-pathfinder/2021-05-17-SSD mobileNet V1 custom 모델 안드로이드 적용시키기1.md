@@ -3,7 +3,7 @@ date: '2021-05-17'
 title: 'SSD mobileNet V1 custom 모델 안드로이드 적용시키기 (1/2)'
 categories: ['pathfinder']
 summary: '이번에 소프트웨어설계실험 과목에서 진행한 **부산대 길찾기**프로젝트에서 객체인식 모델 학습부분입니다.'
-thumbnail: './thumbnail/pathfinder_손실값.png'
+thumbnail: './thumbnail/pathfinder_loss.png'
 ---
 
 이번에 소프트웨어설계실험 과목에서 진행한 **부산대 길찾기**프로젝트에서 객체인식 모델 학습부분입니다.

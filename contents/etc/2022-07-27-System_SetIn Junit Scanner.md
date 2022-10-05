@@ -3,7 +3,7 @@ date: '2022-07-27'
 title: 'System.SetIn과 Scanner를 이용한 Junit 다중 테스트 시 NoSuchElementException'
 categories: ['etc']
 summary: '`Scanner`를 이용한 테스트를 진행하던 중, 단일 Junit 테스트에서는 문제 없이 성공하던게, 전체 테스트를 돌리기만 하면 실패가 나오는 현상이 발생했습니다. 비슷한 문제를 겪고 있을 분들을 위해 문제의 원인과 해결 방법에 대해 말씀드리겠습니다.'
-thumbnail: './Junit다중테스트성공.png'
+thumbnail: './Junit_test_success.png'
 ---
 
 > System.SetIn()과 Scanner를 이용한 Junit 다중 테스트 시 NoSuchElementException 발생하는 오류
