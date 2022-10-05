@@ -67,7 +67,7 @@ const Sidebar = ({ children }: SidebarProps) => {
     일상: [
       {
         name: '후기',
-        href: '/?category=후기',
+        href: '/?category=review',
       },
     ],
   };
