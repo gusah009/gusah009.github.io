@@ -26,7 +26,6 @@ const Sidebar = ({ children }: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarForDeskOpen, setSidebarForDeskOpen] = useState(true);
   const categories = {
-    Home: [],
     JAVA: [
       {
         name: 'Clean Code',
@@ -51,7 +50,6 @@ const Sidebar = ({ children }: SidebarProps) => {
         href: '/?category=keeper_homepage',
       },
     ],
-    'COMPUTER SCIENCE': [],
     ETC: [
       {
         name: 'Git',
@@ -121,11 +119,13 @@ const Sidebar = ({ children }: SidebarProps) => {
                   </div>
                 </Transition.Child>
                 <div className="w-full flex flex-col items-center px-4 mt-10">
-                  <img
-                    className="w-20 h-20 mb-3 rounded-md"
-                    src={profileImg}
-                    alt="profile"
-                  />
+                  <Link to="/">
+                    <img
+                      className="w-20 h-20 mb-3 rounded-md"
+                      src={profileImg}
+                      alt="profile"
+                    />
+                  </Link>
                   <div className=" text-slate-900 text-md font-bold">
                     gusah009
                   </div>
@@ -205,11 +205,13 @@ const Sidebar = ({ children }: SidebarProps) => {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow bg-white shadow-lg shadow-slate-200 overflow-y-auto">
           <div className="w-full flex flex-col items-center px-4 mt-10 ">
-            <img
-              className="w-20 h-20 mb-3 rounded-md"
-              src={profileImg}
-              alt="profilte"
-            />
+            <Link to="/">
+              <img
+                className="w-20 h-20 mb-3 rounded-md"
+                src={profileImg}
+                alt="profilte"
+              />
+            </Link>
             <div className=" text-slate-900 text-md font-bold">gusah009</div>
           </div>
           {/*  SubNav -> */}
@@ -282,6 +284,12 @@ const Sidebar = ({ children }: SidebarProps) => {
             <span className="sr-only">Open sidebar</span>
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
           </button>
+          <div className="flex-1 px-4 flex justify-between text-black">
+            <div />
+            <Link className="flex items-center" to="/">
+              <img className="h-8 w-8 rounded-full" src={profileImg} alt="" />
+            </Link>
+          </div>
         </div>
 
         <main>
