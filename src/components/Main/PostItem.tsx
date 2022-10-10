@@ -36,7 +36,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         {/* Date */}
         <div className="text-sm font-normal opacity-70">{date}</div>
         {/* Category */}
-        <div className="flex flex-wrap my-2">
+        <div className="flex flex-wrap my-2 space-x-1">
           {categories.map(category => (
             // CategoryItem
             <div
