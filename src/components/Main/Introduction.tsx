@@ -20,7 +20,7 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({
           {/* // SubTitle */}
           <div className=" text-sm md:text-xl font-semibold">안녕하세요!</div>
           {/* // Title */}
-          <div className="mt-1 flex whitespace-pre text-2xl md:text-3xl font-semibold">
+          <div className="mt-1 flex flex-wrap whitespace-pre text-2xl md:text-3xl font-semibold">
             항상
             <div className=" text-blue-300 "> "왜?" </div>를 고민하는 개발자
             정현모입니다.
