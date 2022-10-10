@@ -30,7 +30,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
       {/* PostItemContent */}
       <div className=" flex-1 flex flex-col p-4">
         {/* Title */}
-        <div className=" overflow-hidden mb-1 text-ellipsis whitespace-normal break-words text-xl font-bold line-clamp-2">
+        <div className="h-14 overflow-hidden mb-1 text-ellipsis whitespace-normal break-words text-xl font-bold line-clamp-2">
           {title}
         </div>
         {/* Date */}
@@ -48,7 +48,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
           ))}
         </div>
         {/* Summary */}
-        <div className="overflow-hidden mt-auto text-ellipsis whitespace-normal break-words text-base opacity-80 line-clamp-2">
+        <div className="h-12 overflow-hidden mt-auto text-ellipsis whitespace-normal break-words text-base opacity-80 line-clamp-2">
           {summary}
         </div>
       </div>
