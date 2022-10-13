@@ -12,6 +12,10 @@ import { ClipboardListIcon } from '@heroicons/react/solid';
 import SubCategory from './SubCategory';
 import { Tab, Disclosure } from '@headlessui/react';
 import { Link } from 'gatsby';
+import { NotionIcon } from 'assets/NotionIcon';
+import { GithubIcon } from 'assets/GithubIcon';
+import { MailIcon } from 'assets/MailIcon';
+
 const profileImg = 'https://avatars.githubusercontent.com/u/26597702?v=4';
 
 type SidebarProps = {
@@ -126,8 +130,22 @@ const Sidebar = ({ children }: SidebarProps) => {
                       alt="profile"
                     />
                   </Link>
-                  <div className=" text-slate-900 text-md font-bold">
+                  <div className=" text-slate-900 text-md font-bold mb-6">
                     gusah009
+                  </div>
+                  <div className="flex space-x-6">
+                    <Link
+                      to="https://devblog-gusah009.notion.site/gusah009-1f41013097914875a99b6af4134bce9e"
+                      target="_blank"
+                    >
+                      <NotionIcon />
+                    </Link>
+                    <Link to="https://github.com/gusah009" target="_blank">
+                      <GithubIcon />
+                    </Link>
+                    <Link to="mailto:gusah009@naver.com">
+                      <MailIcon />
+                    </Link>
                   </div>
                 </div>
                 {/*  SubNav -> */}
@@ -204,18 +222,34 @@ const Sidebar = ({ children }: SidebarProps) => {
         </div>
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow bg-white shadow-lg shadow-slate-200 overflow-y-auto">
-          <div className="w-full flex flex-col items-center px-4 mt-10 ">
+          <div className="w-full flex flex-col items-center px-4 mt-14 ">
             <Link to="/">
               <img
                 className="w-20 h-20 mb-3 rounded-md"
                 src={profileImg}
-                alt="profilte"
+                alt="profile"
               />
             </Link>
-            <div className=" text-slate-900 text-md font-bold">gusah009</div>
+            <div className=" text-slate-900 text-md font-bold mb-5">
+              gusah009
+            </div>
+            <div className="flex space-x-6">
+              <Link
+                to="https://devblog-gusah009.notion.site/gusah009-1f41013097914875a99b6af4134bce9e"
+                target="_blank"
+              >
+                <NotionIcon />
+              </Link>
+              <Link to="https://github.com/gusah009" target="_blank">
+                <GithubIcon />
+              </Link>
+              <Link to="mailto:gusah009@naver.com">
+                <MailIcon />
+              </Link>
+            </div>
           </div>
           {/*  SubNav -> */}
-          <div className="w-full px-3 pt-12">
+          <div className="w-full px-3 pt-8">
             {Object.entries(categories).map(([category, SubCategories]) => (
               <Disclosure key={category}>
                 {({ open }) => (
