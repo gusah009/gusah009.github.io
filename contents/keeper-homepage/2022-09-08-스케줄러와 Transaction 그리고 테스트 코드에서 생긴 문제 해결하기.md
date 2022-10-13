@@ -1,6 +1,6 @@
 ---
 date: '2022-09-08'
-title: '키퍼 홈페이지 트러블슈팅 - 스케줄러와 Transaction 그리고 테스트 코드에서 생긴 문제 해결하기'
+title: '키퍼 홈페이지 리뉴얼 8 - 스케줄러와 Transaction 그리고 테스트 코드에서 생긴 문제 해결하기'
 categories: ['keeper_homepage']
 summary: '안녕하세요. 오늘은 스케줄러를 이용하면서 생긴 `LazyInitializationException`문제와 테스트 코드에서의 문제에 대해 작성해 보겠습니다.'
 thumbnail: './thumbnail/READ_UNCOMMITED.png'

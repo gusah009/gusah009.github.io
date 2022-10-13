@@ -1,6 +1,6 @@
 ---
 date: '2022-10-12'
-title: '키퍼 홈페이지 리뉴얼 - Embedded Redis 적용'
+title: '키퍼 홈페이지 리뉴얼 9 - Embedded Redis 적용'
 categories: ['keeper_homepage']
 summary: '오늘은 프로젝트에 Embedded Redis를 적용한 사례와 방법을 말씀드리겠습니다.'
 thumbnail: './thumbnail/redis_test_configuration.png'
