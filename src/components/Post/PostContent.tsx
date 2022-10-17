@@ -66,6 +66,33 @@ const MarkdownRenderer = styled.div`
     list-style-type: disc;
   }
 
+  // Adjust Table Element Style
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    padding: 8px 0;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table td,
+  table th {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+  }
+
+  table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
   // Adjust Horizontal Rule style
   hr {
     border: 1px solid #000000;
