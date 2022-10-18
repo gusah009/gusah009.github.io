@@ -39,10 +39,12 @@ const MarkdownRenderer = styled.div`
 
   h1 {
     font-size: 30px;
+    border-bottom: 1px solid #d9dee3;
   }
 
   h2 {
     font-size: 25px;
+    border-bottom: 1px solid #d9dee3;
   }
 
   h3 {
