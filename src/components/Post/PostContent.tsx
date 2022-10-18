@@ -76,6 +76,7 @@ const MarkdownRenderer = styled.div`
 
   table th {
     font-weight: 600;
+    background-color: #778899;
   }
 
   table td,
