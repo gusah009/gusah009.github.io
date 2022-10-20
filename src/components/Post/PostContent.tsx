@@ -112,8 +112,9 @@ const MarkdownRenderer = styled.div`
   .language-text {
     padding: 2px 4px;
     margin: 0px 2px;
-    background: #e2e2e2;
-    color: #f44;
+    background: #e9e9e9;
+    color: #f00;
+    font-size: 14px;
     border-radius: 0.25rem;
   }
 `;
