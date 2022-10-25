@@ -1,6 +1,6 @@
 ---
 date: '2022-06-29'
-title: '[item9] finalizer와 cleaner 사용을 피하라'
+title: '[item9] try-finally 보다는 try-with-resources를 사용하라'
 categories: ['effective_java']
 summary: '`Java`에는 직접 닫아줘야 하는 자원이 많습니다. 예를 들면 `InputStream`, `OutputStream`, `java.sql.Connection`등이 그 예시입니다.'
 thumbnail: './effective_java_thumb.png'

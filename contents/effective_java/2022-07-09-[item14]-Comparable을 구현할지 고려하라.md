@@ -15,10 +15,10 @@ thumbnail: './effective_java_thumb.png'
 
 `compareTo()` 메서드를 재정의 할 때에는 몇 가지 지켜야 할 규약들이 있는데, 이는 아래와 같습니다. *(다음 설명에서 sgn(표현식) 표기는 수학에서 말하는 부호 함수(signum function)를 뜻하며, 표현식의 값이 음수, 0, 양수일 때 -1, 0, 1을 반환하도록 정의했다고 가정합니다.)*
 
-1. `Comparable`을 구현한 클래스는 모든 **x**, **y**에 대해 **sgn(x.compareTo(y)) == -sgn(y.compareTo(x))**여야 한다. *(따라서 **x.compareTo(y)**는 **y.compareTo(x)**가 예외를 던질 때에 한해 예외를 던져야 한다.)*
-2. `Comparable`을 구현한 클래스는 추이성을 보장해야 한다. 즉, **(x.compareTo(y) > 0 && y.compareTo(z) > 0)**이면 **x.compareTo(z) > 0**이다.
+1. `Comparable`을 구현한 클래스는 모든 **x**, **y**에 대해 **sgn(x.compareTo(y)) == -sgn(y.compareTo(x))** 여야 한다. *(따라서 **x.compareTo(y)** 는 **y.compareTo(x)** 가 예외를 던질 때에 한해 예외를 던져야 한다.)*
+2. `Comparable`을 구현한 클래스는 추이성을 보장해야 한다. 즉, **(x.compareTo(y) > 0 && y.compareTo(z) > 0)** 이면 **x.compareTo(z) > 0**이다.
 3. `Comparable`을 구현한 클래스는 모든 **z**에 대해 **x.compareTo(y) == 0**이면 **sgn(x.compareTo(z)) == sgn(y.compareTo(z)) > 0**이다.
-4. 이번 권고가 필수는 아니지만 꼭 지키는 것이 좋다. **(x.compareTo(y) == 0) == (x.equals(y))**여야 한다. `Comparable`을 구현하고 이 권고를 지키지 않는 모든 클래스는 그 사실을 명시해야 한다. 다음과 같이 명시하면 적당할 것이다. *"주의 : 이 클래스의 순서는 `equals` 메서드와 일관되지 않다."*
+4. 이번 권고가 필수는 아니지만 꼭 지키는 것이 좋다. **(x.compareTo(y) == 0) == (x.equals(y))** 여야 한다. `Comparable`을 구현하고 이 권고를 지키지 않는 모든 클래스는 그 사실을 명시해야 한다. 다음과 같이 명시하면 적당할 것이다. *"주의 : 이 클래스의 순서는 `equals` 메서드와 일관되지 않다."*
 
 위 일반 규약은 모든 객체에 대해 전역 동치 관계를 부여하는 `equals()` 메서드와 달리, `compareTo()`는 타입이 다른 객체는 신경쓰지 않아도 됩니다. 즉, 타입이 다른 객체가 주어지면 간단히 `ClassCastException`을 던져도 되며, 대부분 그렇게 합니다.
 
