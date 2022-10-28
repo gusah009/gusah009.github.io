@@ -23,7 +23,7 @@ const PostList: FunctionComponent<PostListProps> = function ({
     // PostListWrapper
     <div
       ref={containerRef}
-      className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full md:w-[768px] my-0 mx-auto py-12 px-5 md:px-0 md:pt-16 md:pb-24"
+      className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full md:w-[725px] lg:w-[840px] my-0 mx-auto py-12 px-5 md:px-0 md:pt-16 md:pb-24"
     >
       {postList.map(
         ({

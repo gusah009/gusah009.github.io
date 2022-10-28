@@ -16,7 +16,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
 
   return (
     // PostHeadInfoWrapper
-    <div className="flex flex-col w-full md:w-[768px] h-full my-0 mx-auto py-10 px-5 md:py-14 md:px-0 text-white">
+    <div className="flex flex-col w-full md:w-[725px] lg:w-[840px] h-full my-0 mx-auto py-10 px-5 md:py-14 md:px-0 text-white">
       <ArrowCircleLeftIcon
         className=" grid place-items-center w-7 h-7 md:w-10 md:h-10 text-white cursor-pointer"
         onClick={goBackPage}

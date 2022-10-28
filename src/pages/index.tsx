@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import '../tailwind.css';
+import '../utils.css';
 import Introduction from 'components/Main/Introduction';
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList';
 import PostList from 'components/Main/PostList';

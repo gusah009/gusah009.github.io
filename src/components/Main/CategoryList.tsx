@@ -15,7 +15,7 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({
 }) {
   return (
     // CategoryListWrapper
-    <div className="flex flex-wrap w-full md:w-[768px] mt-5 md:mt-10 mx-auto mb-0 px-5 md:px-0">
+    <div className="flex flex-wrap w-full md:w-[725px] lg:w-[840px] mt-5 md:mt-10 mx-auto mb-0 px-5 md:px-0">
       {Object.entries(categoryList).map(([name, count]) => (
         // categoryItem
         <Link

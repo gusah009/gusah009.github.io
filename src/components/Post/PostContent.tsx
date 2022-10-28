@@ -123,7 +123,7 @@ const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
   return (
     // MarkdownRenderer
     <MarkdownRenderer
-      className="flex flex-col w-auto md:w-[725px] lg:w-[768px] mx-3 sm:mx-auto my-0 py-14 px-5 md:py-16 md:px-0 break-all"
+      className="flex flex-col w-auto md:w-[725px] lg:w-[840px] mx-3 sm:mx-auto my-0 py-14 px-5 md:py-16 md:px-0 break-all"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   ); /* w-md 커스텀 만들어보기 */
