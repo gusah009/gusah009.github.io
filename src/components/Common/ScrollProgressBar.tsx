@@ -64,7 +64,7 @@ const ScrollProgressBar: FunctionComponent = () => {
       >
         <GatsbyImage
           className={`${
-            width < 97 ? 'w-8' : `w-${100 - width}`
+            width < 98 ? 'w-8' : `w-${100 - width}`
           } drop-shadow-md`}
           image={ghost}
           alt="Progress Image"
