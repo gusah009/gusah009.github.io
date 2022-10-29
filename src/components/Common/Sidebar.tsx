@@ -11,7 +11,8 @@ import { SearchIcon } from '@heroicons/react/solid';
 import { ClipboardListIcon } from '@heroicons/react/solid';
 import SubCategory from './SubCategory';
 import { Tab, Disclosure } from '@headlessui/react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { NotionIcon } from 'assets/NotionIcon';
 import { GithubIcon } from 'assets/GithubIcon';
 import { MailIcon } from 'assets/MailIcon';
@@ -23,11 +24,33 @@ type SidebarProps = {
   children: ReactNode;
 };
 
+type ProgressBarProps = {
+  file: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData;
+    };
+  };
+};
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Sidebar = ({ children }: SidebarProps) => {
+  const {
+    file: {
+      childImageSharp: { gatsbyImageData: grave },
+    },
+  }: ProgressBarProps = useStaticQuery(graphql`
+    query getHomeBtnImg {
+      file(name: { eq: "grave" }) {
+        childImageSharp {
+          gatsbyImageData(width: 150)
+        }
+      }
+    }
+  `);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarForDeskOpen, setSidebarForDeskOpen] = useState(true);
   const categories = {
@@ -207,7 +230,7 @@ const Sidebar = ({ children }: SidebarProps) => {
       <div
         className={`hidden ${
           sidebarForDeskOpen
-            ? 'lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0'
+            ? 'z-40 lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0'
             : ''
         }`}
       >
@@ -320,6 +343,13 @@ const Sidebar = ({ children }: SidebarProps) => {
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
           </button>
           <ScrollProgressBar />
+          <Link className="h-full flex items-end" to="/">
+            <GatsbyImage
+              className="w-9 -ml-4 mr-2 drop-shadow-md"
+              image={grave}
+              alt="Progress Image"
+            />
+          </Link>
         </div>
 
         <main>

@@ -19,7 +19,7 @@ type ProgressBarProps = {
 const ScrollProgressBar: FunctionComponent = () => {
   const {
     file: {
-      childImageSharp: { gatsbyImageData },
+      childImageSharp: { gatsbyImageData: ghost },
     },
   }: ProgressBarProps = useStaticQuery(graphql`
     query getProgressBarImg {
@@ -63,8 +63,10 @@ const ScrollProgressBar: FunctionComponent = () => {
         style={{ marginLeft: `${width}%` }}
       >
         <GatsbyImage
-          className="w-8 drop-shadow-md"
-          image={gatsbyImageData}
+          className={`${
+            width < 97 ? 'w-8' : `w-${100 - width}`
+          } drop-shadow-md`}
+          image={ghost}
           alt="Progress Image"
         />
       </Link>
