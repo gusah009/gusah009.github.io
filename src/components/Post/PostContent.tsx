@@ -14,6 +14,20 @@ const MarkdownRenderer = styled.div`
   // Apply Padding Attribute to All Elements
   p {
     padding: 3px 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre,
+  details {
+    margin-top: 0;
+    margin-bottom: 8px;
   }
 
   // Adjust Heading Element Style
@@ -54,10 +68,14 @@ const MarkdownRenderer = styled.div`
   // Adjust Quotation Element Style
   blockquote {
     margin: 15px 0;
-    padding: 2px 15px;
+    padding: 2px 14px;
     border-left: 4px solid #bdbdbd;
     font-style: italic;
     color: #6e6e6e;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0;
   }
 
   // Adjust List Element Style
