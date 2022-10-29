@@ -15,6 +15,7 @@ import { Link } from 'gatsby';
 import { NotionIcon } from 'assets/NotionIcon';
 import { GithubIcon } from 'assets/GithubIcon';
 import { MailIcon } from 'assets/MailIcon';
+import ScrollProgressBar from './ScrollProgressBar';
 
 const profileImg = 'https://avatars.githubusercontent.com/u/26597702?v=4';
 
@@ -318,12 +319,7 @@ const Sidebar = ({ children }: SidebarProps) => {
             <span className="sr-only">Open sidebar</span>
             <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 px-4 flex justify-between text-black">
-            <div />
-            <Link className="flex items-center" to="/">
-              <img className="h-8 w-8 rounded-full" src={profileImg} alt="" />
-            </Link>
-          </div>
+          <ScrollProgressBar />
         </div>
 
         <main>
