@@ -78,6 +78,12 @@ const Sidebar = ({ children }: SidebarProps) => {
         href: '/?category=keeper_homepage',
       },
     ],
+    CICD: [
+      {
+        name: 'jenkins',
+        href: '/?category=jenkins',
+      },
+    ],
     ETC: [
       {
         name: 'Git',
