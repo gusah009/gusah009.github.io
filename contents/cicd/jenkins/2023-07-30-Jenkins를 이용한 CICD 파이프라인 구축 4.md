@@ -51,7 +51,7 @@ k8s를 설치하는 방법이나 문서는 너무 많기 때문에 생략하고 
 
 ### Ansible로 k8s에 deploy 하기
 
-먼저 `springio에서` 제공해주는 `sample-spring` 이미지를 k8s에 올려보겠습니다.
+먼저 `springio`에서 제공해주는 `sample-spring` 이미지를 k8s에 올려보겠습니다.
 
 - k8s deployment, service
     
@@ -127,7 +127,7 @@ k8s를 설치하는 방법이나 문서는 너무 많기 때문에 생략하고 
       chdir: /home/ubuntu/k8s
 ```
 
-<img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/4a3fc7f6-1f87-4bc1-8c5d-a40c73316cb3">
+<img width="600" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/4a3fc7f6-1f87-4bc1-8c5d-a40c73316cb3">
 
 cicd-deployment가 잘 올라가있는것을 볼 수 있습니다.
 
@@ -141,7 +141,7 @@ cicd-deployment가 잘 올라가있는것을 볼 수 있습니다.
 
 이번엔 service를 올려보겠습니다.
 
-<img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/6391a714-80df-4131-8e1d-708041f2fbe5">
+<img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/6391a714-80df-4131-8e1d-708041f2fbe5">
 
 그러고 나면 아래와 같이 32000포트에 sample spring 애플리케이션이 잘 열린걸 볼 수 있습니다.
 
@@ -202,7 +202,9 @@ cicd-deployment가 잘 올라가있는것을 볼 수 있습니다.
 
 그럼 아래처럼 나의 애플리케이션 파일이 배포되어 있는걸 볼 수 있습니다.
 
-<img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/e7aae591-0265-4941-b7d0-af144242cf8e"><img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/097116e4-5ba5-4566-a902-54818d06f0cd">
+<img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/e7aae591-0265-4941-b7d0-af144242cf8e">
+
+<img width="300" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/097116e4-5ba5-4566-a902-54818d06f0cd">
 
 ---
 
@@ -212,11 +214,11 @@ cicd-deployment가 잘 올라가있는것을 볼 수 있습니다.
 **하지만 저는 개발용으로 사용중이어서 그냥 스왑 메모리를 켜버렸습니다.***
 > 
 > 
-> <img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/72d67dd1-20c8-4a0c-80bd-fd52e4f8705e">
+> <img width="550" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/72d67dd1-20c8-4a0c-80bd-fd52e4f8705e">
 >
 > *before*
 > 
-> <img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/c7ac8d78-edc3-4905-be7a-ba6d98a94f29">
+> <img width="55  0" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/c7ac8d78-edc3-4905-be7a-ba6d98a94f29">
 >
 > *after*
 > 

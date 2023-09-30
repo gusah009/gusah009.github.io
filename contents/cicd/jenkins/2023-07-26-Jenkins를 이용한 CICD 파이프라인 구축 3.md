@@ -78,7 +78,7 @@ ansible ↔ hosts 연결 확인
 
 `ansible all -m ping` 명령어를 사용하면 내가 등록한 hosts 들에게 ansible이 잘 연결되는지 확인할 수 있습니다.
 
-<img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/0ffe4125-6343-4d60-b374-2265004f76e2">
+<img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/0ffe4125-6343-4d60-b374-2265004f76e2">
 
 그래서 위와 같이 host의 private_key를 주석처리하면 **아래와 같이 실패하는 것**을 볼 수 있습니다.
 

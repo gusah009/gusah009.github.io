@@ -50,12 +50,12 @@ thumbnail: './thumbnail/choonsik_jenkins.jpeg'
     ```
     
 
-![image](https://user-images.githubusercontent.com/26597702/271583425-17add2fe-ae2d-4b25-a2c3-5bd6df97b98a.png)
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/26597702/271583425-17add2fe-ae2d-4b25-a2c3-5bd6df97b98a.png">
 
 > *미세한 꿀팁) 아래의 IntelliJ IDEA GDSL을 이용하면 하이라이팅 및 자동완성 기능을 쓸 수 있습니다. 구글에 검색하면 더 고도화된 GDSL이 많이 나오니 참고하세용.*
 > 
 > 
-> ![image](https://user-images.githubusercontent.com/26597702/271583481-569f088f-4223-4e56-9d29-74a2fdfd9dc9.png)
+> <img width="500" alt="image" src="https://user-images.githubusercontent.com/26597702/271583481-569f088f-4223-4e56-9d29-74a2fdfd9dc9.png">
 > 
 
 ### 지금까지 했던 내용 Pipeline으로 구축해보기
@@ -160,15 +160,15 @@ thumbnail: './thumbnail/choonsik_jenkins.jpeg'
 
 위 파이프라인이 보기엔 굉장히 길지만 지금까지 해왔던 내용을 pipeline에 그대로 옮겼을 뿐이라 찬찬히 읽어보면 굉장히 쉽습니다.
 
-![image](https://user-images.githubusercontent.com/26597702/271583523-1c768a60-9da9-48a2-9832-f9a1d10d6711.png)
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/26597702/271583523-1c768a60-9da9-48a2-9832-f9a1d10d6711.png">
 
 몇번의 삽질 끝에 파이프라인다운 파이프라인을 만들었습니다..!
 
 한 번 코드도 갱신해서 올려보고 다시 배포해보면...
 
-![image](https://user-images.githubusercontent.com/26597702/271583570-a22b9aa9-6612-45ce-ab2b-520fa39f5123.png)
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/26597702/271583570-a22b9aa9-6612-45ce-ab2b-520fa39f5123.png">
 
-![image](https://user-images.githubusercontent.com/26597702/271583660-3525fdde-a805-48cb-a63e-2958fe16a612.png)
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/26597702/271583660-3525fdde-a805-48cb-a63e-2958fe16a612.png">
 
 짜잔 완성~
 
@@ -196,18 +196,18 @@ node('slave1') { // 설정할 때 썼던 docker agent name
 }
 ```
 
-![image](https://user-images.githubusercontent.com/26597702/271584684-1d5c3490-9bfc-4d3f-af01-137a5268a07a.png)
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/26597702/271584684-1d5c3490-9bfc-4d3f-af01-137a5268a07a.png">
 
 그럼 위와 같이 **slave1 라벨의 모든 노드가 offline**이라고 뜹니다.
 
-![image](https://user-images.githubusercontent.com/26597702/271584737-d07f7304-ce6e-4743-9af4-60855702e5f1.png)
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/26597702/271584737-d07f7304-ce6e-4743-9af4-60855702e5f1.png">
 
 그리곤 아래와 같이 master 내부에 slave node들을 열심히 생성하기 시작합니다.
 
 > *이건 jenkins에서 제공해주는 docker 플러그인이 해주는 기능입니다. 실제로 jenkins를 구성한다면 노드의 성능을 최대로 활용하기 위해 아예 다른 노드에 워커 노드를 띄우고 SSH 연결하는게 좋을 것 같습니다.*
 > 
 
-![image](https://user-images.githubusercontent.com/26597702/271584791-0dbd1197-a018-4712-8408-5ec224583238.png)
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/26597702/271584791-0dbd1197-a018-4712-8408-5ec224583238.png">
 
 시간이 지나면 *Running on ~~~* 문구가 뜨는데, offline이던 slave 노드를 도커로 띄우는 과정입니다.
 
