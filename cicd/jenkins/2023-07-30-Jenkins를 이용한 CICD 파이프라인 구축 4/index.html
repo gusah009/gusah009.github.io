@@ -44,7 +44,7 @@
 <img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/e52e2fec-abe9-483c-bc59-0d00b75f610f">
 <p>개인 공부 환경 [전체 구조]</p>
 <h3>Ansible로 k8s에 deploy 하기</h3>
-<p>먼저 <code class="language-text">springio에서</code> 제공해주는 <code class="language-text">sample-spring</code> 이미지를 k8s에 올려보겠습니다.</p>
+<p>먼저 <code class="language-text">springio</code>에서 제공해주는 <code class="language-text">sample-spring</code> 이미지를 k8s에 올려보겠습니다.</p>
 <ul>
 <li>
 <p>k8s deployment, service</p>
@@ -109,7 +109,7 @@
 <span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">command</span><span class="mtk1">: </span><span class="mtk8">kubectl apply -f cicd-devops-service.yml</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">args</span><span class="mtk1">:</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">      </span><span class="mtk4">chdir</span><span class="mtk1">: </span><span class="mtk8">/home/ubuntu/k8s</span></span></span></code></pre>
-<img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/4a3fc7f6-1f87-4bc1-8c5d-a40c73316cb3">
+<img width="600" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/4a3fc7f6-1f87-4bc1-8c5d-a40c73316cb3">
 <p>cicd-deployment가 잘 올라가있는것을 볼 수 있습니다.</p>
 <blockquote>
 <p>위 툴은 k9s라는 툴입니다.</p>
@@ -121,7 +121,7 @@
 <blockquote>
 </blockquote>
 <p>이번엔 service를 올려보겠습니다.</p>
-<img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/6391a714-80df-4131-8e1d-708041f2fbe5">
+<img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/6391a714-80df-4131-8e1d-708041f2fbe5">
 <p>그러고 나면 아래와 같이 32000포트에 sample spring 애플리케이션이 잘 열린걸 볼 수 있습니다.</p>
 <img width="400" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/18a513b1-a6fc-4b25-a6ba-5a5d5f012952">
 <h3>이 과정을 Jenkins에 얹어서 진행해보기</h3>
@@ -167,7 +167,8 @@
 <h3>애플리케이션 올리기</h3>
 <p>도커 이미지를 빌드해서 docker hub에 올렸다면 그 이미지를 받아서 위의 deployment, service를 갱신해주는 작업을 하면 됩니다.</p>
 <p>그럼 아래처럼 나의 애플리케이션 파일이 배포되어 있는걸 볼 수 있습니다.</p>
-<p><img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/e7aae591-0265-4941-b7d0-af144242cf8e"><img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/097116e4-5ba5-4566-a902-54818d06f0cd"></p>
+<img width="200" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/e7aae591-0265-4941-b7d0-af144242cf8e">
+<img width="300" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/097116e4-5ba5-4566-a902-54818d06f0cd">
 <hr>
 <blockquote>
 <p>*오라클 서버가 너무 느려서 봤더니 <strong>메모리 사용량이 계속 80~90%</strong> 가 찍히고 있었습니다…</p>
@@ -176,9 +177,9 @@
 이유는 k8s가 노드들의 리소스를 확인하고 적절한 곳에 파드를 분배해야 하는데 스왑 메모리가 켜져있으면 파드의 현재 리소스를 파악할 수 없기 때문입니다.
 <strong>하지만 저는 개발용으로 사용중이어서 그냥 스왑 메모리를 켜버렸습니다.</strong>*</p>
 <blockquote>
-<img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/72d67dd1-20c8-4a0c-80bd-fd52e4f8705e">
+<img width="550" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/72d67dd1-20c8-4a0c-80bd-fd52e4f8705e">
 <p><em>before</em></p>
-<img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/c7ac8d78-edc3-4905-be7a-ba6d98a94f29">
+<img width="55  0" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/c7ac8d78-edc3-4905-be7a-ba6d98a94f29">
 <p><em>after</em></p>
 <img width="500" alt="image" src="https://github.com/KEEPER31337/Homepage-Back-R2/assets/26597702/d1e77c3d-83fc-47af-b6a4-192daa503b9a">
 <p>메모리 사용량이 뚝 떨어진걸 볼 수 있습니다. (그 와중에 또 서버가 죽어서 metric 공백이 생겼네요…)</p>
