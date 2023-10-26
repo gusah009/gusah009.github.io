@@ -45,6 +45,12 @@
 <pre class="grvsc-container default-dark" data-language="shell" data-index="0"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source">git clone -b main https://github.com/SigNoz/signoz.git</span></span>
 <span class="grvsc-line"><span class="grvsc-source">cd signoz/deploy/</span></span>
 <span class="grvsc-line"><span class="grvsc-source">./install.sh</span></span></code></pre>
+<p>설치를 진행하면 아래와 같이 docker-compose로 뜨게 됩니다.</p>
+<blockquote>
+<p>아마 처음 실행시키면 <code class="language-text">deploy/docker/clickhouse-setup/docker-compose.yaml</code> 에  <code class="language-text">hotrod</code>, <code class="language-text">load-hotrod</code> 두 도커 컨테이너가 함께 띄워질텐데, 두 컨테이너는 signoz 시각화를 위해 dummy 트래픽을 발생시키는 트래픽 생성기라고 보시면 됩니다.</p>
+<p>프로덕션과 이번 예시에선 불필요하기 때문에 제외했습니다. (cpu랑 배터리도 엄청 먹어요.)</p>
+</blockquote>
+<img width="946" alt="image" src="https://user-images.githubusercontent.com/26597702/277920543-d10769d5-74bd-4273-a8ae-fa9356bf90df.png">
 <h3>처음 접속시 회원가입 (최초 회원가입은 admin이 됨)</h3>
 <img width="896" alt="image" src="https://user-images.githubusercontent.com/26597702/275214896-7392ef86-a23f-40c4-900e-6f6f0e0c8cc6.png">
 <h3>opentelemetry javaagent 설치</h3>
@@ -56,8 +62,100 @@
 <pre class="grvsc-container default-dark" data-language="shell" data-index="2"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source">java -javaagent:/path/opentelemetry-javaagent.jar \</span></span>
 <span class="grvsc-line"><span class="grvsc-source"> -Dotel.exporter.otlp.endpoint=http://&lt;IP of SigNoz&gt;:4317 \</span></span>
 <span class="grvsc-line"><span class="grvsc-source"> -Dotel.resource.attributes=service.name=&lt;service_name&gt; \</span></span>
-<span class="grvsc-line"><span class="grvsc-source"> -jar target/*.jar</span></span></code></pre>
-<p>다음 포스팅에선 제대로 한 번 signoz를 사용해보고 어떤 장점이 있는지 알아보겠습니다.</p>
+<span class="grvsc-line"><span class="grvsc-source"> -jar *.jar</span></span></code></pre>
+<p>저는 IntelliJ에서 시연을 했기 때문에 위 옵션을 아래와 같이 IntelliJ에 줬습니다.</p>
+<img width="732" alt="image" src="https://user-images.githubusercontent.com/26597702/277920336-f067f610-02b8-43b5-bc96-8bae6fe00778.png">
+<h2>signoz 사용해보기</h2>
+<p>시연에 사용한 코드는 아래와 같습니다.</p>
+<pre class="grvsc-container default-dark" data-language="java" data-index="3"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">Slf4j</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">RequiredArgsConstructor</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">RestController</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk4">class</span><span class="mtk1"> </span><span class="mtk10">MyController</span><span class="mtk1"> {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">private</span><span class="mtk1"> </span><span class="mtk4">final</span><span class="mtk1"> </span><span class="mtk10">MyService</span><span class="mtk1"> </span><span class="mtk12">myService</span><span class="mtk1">;</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    @</span><span class="mtk10">GetMapping</span><span class="mtk1">(</span><span class="mtk8">&quot;/test&quot;</span><span class="mtk1">)</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk10">String</span><span class="mtk1"> </span><span class="mtk11">test</span><span class="mtk1">(@</span><span class="mtk10">RequestParam</span><span class="mtk1"> </span><span class="mtk10">String</span><span class="mtk1"> </span><span class="mtk12">username</span><span class="mtk1">) {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk12">log</span><span class="mtk1">.</span><span class="mtk11">info</span><span class="mtk1">(</span><span class="mtk8">&quot;req: username = {}&quot;</span><span class="mtk1">, username);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk15">return</span><span class="mtk1"> </span><span class="mtk12">myService</span><span class="mtk1">.</span><span class="mtk11">getHome</span><span class="mtk1">(username);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    }</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">}</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">Slf4j</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">RequiredArgsConstructor</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">Service</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk4">class</span><span class="mtk1"> </span><span class="mtk10">MyService</span><span class="mtk1"> {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">private</span><span class="mtk1"> </span><span class="mtk4">final</span><span class="mtk1"> </span><span class="mtk10">MyRepository</span><span class="mtk1"> </span><span class="mtk12">myRepository</span><span class="mtk1">;</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk10">String</span><span class="mtk1"> </span><span class="mtk11">getHome</span><span class="mtk1">(</span><span class="mtk10">String</span><span class="mtk1"> </span><span class="mtk12">username</span><span class="mtk1">) {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk12">myRepository</span><span class="mtk1">.</span><span class="mtk11">checkTest</span><span class="mtk1">(username);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk12">log</span><span class="mtk1">.</span><span class="mtk11">info</span><span class="mtk1">(</span><span class="mtk8">&quot;pass checkTest&quot;</span><span class="mtk1">);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk15">return</span><span class="mtk1"> username + </span><span class="mtk8">&quot;&#39;s home&quot;</span><span class="mtk1">;</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    }</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">}</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">@</span><span class="mtk10">Repository</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk4">class</span><span class="mtk1"> </span><span class="mtk10">MyRepository</span><span class="mtk1"> {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    </span><span class="mtk4">public</span><span class="mtk1"> </span><span class="mtk10">void</span><span class="mtk1"> </span><span class="mtk11">checkTest</span><span class="mtk1">(</span><span class="mtk10">String</span><span class="mtk1"> </span><span class="mtk12">username</span><span class="mtk1">) {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        </span><span class="mtk15">if</span><span class="mtk1"> (!</span><span class="mtk12">Objects</span><span class="mtk1">.</span><span class="mtk11">equals</span><span class="mtk1">(username, </span><span class="mtk8">&quot;test&quot;</span><span class="mtk1">)) {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">            </span><span class="mtk15">throw</span><span class="mtk1"> </span><span class="mtk15">new</span><span class="mtk1"> </span><span class="mtk11">RuntimeException</span><span class="mtk1">(</span><span class="mtk8">&quot;username is not test&quot;</span><span class="mtk1">);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">        }</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">    }</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="mtk1">}</span></span></span></code></pre>
+<h3>Service</h3>
+<p>앱을 띄운 상태로 signoz에 접속해보면 <code class="language-text">Services</code> 항목에 우리의 앱이 떠있는 것을 볼 수 있습니다.</p>
+<img width="1195" alt="스크린샷 2023-10-16 10 01 03" src="https://user-images.githubusercontent.com/26597702/277922396-2c71925f-0859-4e59-b632-a5f45ab62e92.png">
+<p>앱을 눌러 들어가보면 여러 지표들을 볼 수 있습니다.</p>
+<img width="1386" alt="image" src="https://user-images.githubusercontent.com/26597702/277923530-7262be80-377d-4988-b0c1-c3408066b1fc.png">
+<h3>Traces</h3>
+<p><code class="language-text">Traces</code>는 signoz의 분산 추적 로그를 볼 수 있는 섹션입니다.</p>
+<p>각 Trace가 하나의 트랜잭션 역할을 하며, 하나의 요청당 하나의 <code class="language-text">traceId</code>가 부여돼 각각의 애플리케이션에 들어가 로그를 보는게 아니라, <code class="language-text">traceId</code>별로 로그를 확인할 수 있습니다.</p>
+<img width="388" alt="image" src="https://user-images.githubusercontent.com/26597702/277932935-240aac15-b203-4771-8b68-a88f2bdf98b8.png">
+<p>위와 같이 <code class="language-text">/home?username=test</code>로 호출하면, 아래와 같이 <code class="language-text">trace</code> 섹션에 로그가 찍히는걸 확인할 수 있습니다. 한 번 자세히 살펴보겠습니다.</p>
+<img width="843" alt="스크린샷 2023-10-25 17 55 43" src="https://user-images.githubusercontent.com/26597702/277933328-426d82a2-4ad5-47b7-93fd-35ffc4a58dcd.png">
+<p>아래 trace 로그를 통해 총 걸린 시간, 각 구간에서 걸린 시간, 오른쪽 하단엔 요청의 정보들(userAgent, 요청자의 osType 등등) 을 볼 수 있습니다.</p>
+<p>여기서 개인적으로 가장 매력적으로 다가왔던 기능은 오른쪽의 <code class="language-text">Go to Related Logs</code> 인데요, 한 번 눌러보겠습니다.</p>
+<img width="1657" alt="스크린샷 2023-10-25 18 05 32" src="https://user-images.githubusercontent.com/26597702/277936323-e286f732-b593-42e2-bf1b-850bdfe4c7e0.png">
+<p>자연스럽게 Logs 탭으로 전환되며 <code class="language-text">traceId</code>에서 찍힌 로그들을 볼 수 있습니다. 이를 이용해 우리는 해당 요청을 보냈을 때 <code class="language-text">request username</code>이 무엇인지, 그리고 <code class="language-text">checkTest</code>는 통과했는지 등등 관련 정보들을 알 수 있습니다.</p>
+<img width="843" alt="스크린샷 2023-10-25 18 11 17" src="https://user-images.githubusercontent.com/26597702/277938155-07db247f-58bc-41bd-868a-af23fb35df14.png">
+<p>무엇보다 지금은 나오지 않았지만 signoz는 분산 추적 로그를 지원하기 때문에 서버가 여러대일때 그 진가를 발휘합니다.</p>
+<p><code class="language-text">trace</code>는 signoz의 매우 매력적인 기능으로 다음 포스팅에서 더 상세하게 알아보겠습니다.</p>
+<h3>Logs</h3>
+<p>로그는 말 그대로 로그들을 모아놓은 섹션입니다.</p>
+<p>아래에 보이는 것 처럼 자동완성을 지원하는데요, <code class="language-text">=</code>, <code class="language-text">IN</code>, <code class="language-text">CONTAINS</code> 같이 sql에서 지원하는 조건은 모두 지원하고 있습니다.</p>
+<img width="843" alt="스크린샷 2023-10-25 18 26 18" src="https://user-images.githubusercontent.com/26597702/277942557-0b44bda3-9a94-46cb-a132-d628dc29f9c3.png">
+<blockquote>
+<p><code class="language-text">clickhouse</code>는 컬럼 지향 DB라 집계함수(min, max, sum …)에 특화되어 있습니다. text 검색은 <code class="language-text">elasticSearch</code>가 역인덱싱을 통해 더 우수할 수 있습니다.</p>
+<p>실제로 signoz에서 elasticSearch와 비교한 <a href="https://signoz.io/blog/logs-performance-benchmark/?utm_source=github-readme&#x26;utm_medium=logs-benchmark" target="_blank" rel="nofollow">벤치마크</a>에서도 “수집 시간”, “쿼리”, “저장”에 대해 비교분석했었는데 “수집 시간”, “저장”에 대해선 ES보다 우수한 성능을 보여줬지만 “쿼리” 부분은 집계쿼리를 제외하곤 ES에 밀리는 모습이었습니다.</p>
+<img width="745" alt="image" src="https://user-images.githubusercontent.com/26597702/277952124-20df3109-09f5-4497-9880-e09c48fce662.png">
+</blockquote>
+<h3>DashBoard</h3>
+<p>대시보드는 그라파나와 같이 보고 싶은 패널들을 대시보드화 할 수 있는 부분입니다.</p>
+<p>아래 예시 이미지는 <a href="https://signoz.io/blog/out-of-box-application-monitoring-prometheus/" target="_blank" rel="nofollow">signoz 공식사이트</a>에서 가져왔습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/26597702/277953002-a3ac7996-f665-4835-a3fe-bcd2c08f52ff.png" alt="image"></p>
+<h3>Exceptions</h3>
+<p>Exceptions도 매력적인 부분 중 하나로, <code class="language-text">trace</code>와 연계되어 에러가 찍힐 당시의 로그나 관련 내용들을 확인할 수 있습니다.</p>
+<p>한 번 <code class="language-text">username</code>을 <code class="language-text">gusah009</code>로 보내보겠습니다.</p>
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/26597702/277953805-b5eeb7c3-e7d6-4e23-ad19-5651fb89aafe.png">
+<img width="1657" alt="스크린샷 2023-10-25 19 02 57" src="https://user-images.githubusercontent.com/26597702/277953985-1684180c-edf9-40da-9e62-10b3bfcea97c.png">
+<p>위와 같이 로그에 Exception이 추가되고, 아래처럼 상세 정보를 볼 수 있습니다.</p>
+<p>여기서 오른쪽에 <code class="language-text">See the error in trace graph</code>가 있는데, 이를 확인해보겠습니다.</p>
+<img width="843" alt="스크린샷 2023-10-25 19 03 27" src="https://user-images.githubusercontent.com/26597702/277954372-9e54e69e-f598-46b1-869a-ffb5e06eb6c9.png">
+<p>그럼 에러가 났을 때의 trace 로그를 확인할 수 있고, 당연히 관련 애플리케이션 로그들도 확인이 가능합니다.</p>
+<img width="1634" alt="스크린샷 2023-10-25 19 28 57" src="https://user-images.githubusercontent.com/26597702/277965364-7f49b362-adf4-4ac8-8a6c-9ab05d7c8ed2.png">
+<h3>Service Map</h3>
+<p>서비스 맵은 애플리케이션이 여러개일때 진가를 발휘하므로 우선 생략하겠습니다.</p>
+<h3>Usage Explorer</h3>
+<p>사용량 탐색기는 특정 기간동안 얼마나 데이터가 쌓였는지 볼 수 있는 지표입니다.</p>
+<p>로그나 데이터를 너무 오래 저장하면 비용 문제가 있기 때문에 이 지표를 활용해 적당한 로그 데이터 저장 기간을 정하면 좋습니다.</p>
+<img width="831" alt="스크린샷 2023-10-25 19 36 25" src="https://user-images.githubusercontent.com/26597702/277968634-5b35c629-340f-4366-bf17-0b984c465332.png">
+<h3>Settings</h3>
+<p>앞서 적절한 로그 데이터 저장 기간을 정하면 좋다고 했는데, signoz에선 이 데이터 저장 기간 역시 세팅할 수 있도록 제공합니다.</p>
+<img width="831" alt="스크린샷 2023-10-25 19 36 46" src="https://user-images.githubusercontent.com/26597702/277968819-2a90624d-2cc4-483b-90ee-b560991c98f3.png">
+<p>그 외에 signoz에 접근할 수 있는 멤버 권한을 설정하거나 알람을 설정할 수 있습니다.</p>
+<h2>끝</h2>
+<p>그럼 다음 포스팅에선 여러 애플리케이션을 이용해 <strong>분산 추적 모니터링 시스템 signoz</strong>의 특장점을 알아보겠습니다.</p>
 <style class="grvsc-styles">
   .grvsc-container {
     overflow: auto;
@@ -151,6 +249,13 @@
     background-color: #1E1E1E;
     color: #D4D4D4;
   }
+  .default-dark .mtk1 { color: #D4D4D4; }
+  .default-dark .mtk10 { color: #4EC9B0; }
+  .default-dark .mtk4 { color: #569CD6; }
+  .default-dark .mtk12 { color: #9CDCFE; }
+  .default-dark .mtk8 { color: #CE9178; }
+  .default-dark .mtk11 { color: #DCDCAA; }
+  .default-dark .mtk15 { color: #C586C0; }
   .default-dark .grvsc-line-highlighted::before {
     background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
     box-shadow: inset var(--grvsc-line-highlighted-border-width, 4px) 0 0 0 var(--grvsc-line-highlighted-border-color, rgba(255, 255, 255, 0.5));
