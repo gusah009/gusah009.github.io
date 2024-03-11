@@ -3,7 +3,7 @@ date: '2024-03-11'
 title: 'HyperLogLog'
 categories: ['etc']
 summary: '적은 바이트로 카디널리티 구하기'
-thumbnail: './images/longhorn/longhorn-icon.png'
+thumbnail: './images/hll/title.jpg'
 ---
 
 # Set으로 담기엔 너무 크다
