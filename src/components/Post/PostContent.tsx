@@ -79,7 +79,11 @@ const MarkdownRenderer = styled.div`
   }
 
   // Adjust List Element Style
-  ol,
+  ol {
+    margin-left: 24px;
+    padding: 8px 0;
+    list-style-type: decimal;
+  }
   ul {
     margin-left: 20px;
     padding: 8px 0;
