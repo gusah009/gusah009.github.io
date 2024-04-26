@@ -89,6 +89,10 @@ const Sidebar = ({ children }: SidebarProps) => {
         name: 'Git',
         href: '/?category=Git',
       },
+      {
+        name: 'Infra',
+        href: '/?category=Infra',
+      },
     ],
     일상: [
       {
