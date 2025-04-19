@@ -12,7 +12,7 @@ thumbnail: './images/crdt/notion-icon.png'
 
 상태 기반과 작업 기반의 가장 큰 차이를 아래에서 보겠습니다.
 
-![Untitled](op-based/Untitled.png)
+![Untitled](op_based/Untitled.png)
 
 ### 인과관계 문제
 
@@ -34,7 +34,7 @@ operation 방식은 순서가 뒤바뀌면 큰 문제가 될 수 있습니다.
 
 그런데 작업 기반 CRDT는 모든 작업을 "반드시" 받아야 합니다. 작업을 모두 받아야 데이터가 완성되기 때문인데요,
 
-![Untitled](op-based/Untitled1.png)
+![Untitled](op_based/Untitled1.png)
 
 이 때 만약 A가 영구적으로 네트워크가 끊겼다면 어떻게 될까요? B는 영원히 기다려야 할까요?
 
@@ -46,7 +46,7 @@ operation 방식은 순서가 뒤바뀌면 큰 문제가 될 수 있습니다.
 
 N개의 노드가 있다면 이벤트 하나가 발생했을 때 (N - 1)^2 만큼 네트워크로 메시지가 날아가게 되는데요,
 
-![graphviz.png](op-based/graphviz.png)
+![graphviz.png](op_based/graphviz.png)
 
 이렇게 중복이 많아지는 문제를 해결하기 위해 pull-based model이 채택되었습니다.
 
@@ -54,7 +54,7 @@ N개의 노드가 있다면 이벤트 하나가 발생했을 때 (N - 1)^2 만�
 
 이 방식을 이용하면 모든 변경사항이 아니라, 본인이 알고 있는 이벤트 다음부터 얻을 수 있다.
 
-![Untitled](op-based/Untitled2.png)
+![Untitled](op_based/Untitled2.png)
 
 출처: [https://www.bartoszsypytkowski.com/content/images/2020/08/rcb-sequence-diagram-2.png](https://www.bartoszsypytkowski.com/content/images/2020/08/rcb-sequence-diagram-2.png)
 
