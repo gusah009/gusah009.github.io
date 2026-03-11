@@ -1,3 +1,7 @@
+// Global CSS
+import './src/tailwind.css';
+import './src/utils.css';
+
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
